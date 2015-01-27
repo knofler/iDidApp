@@ -1,0 +1,245 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="my-element">
+  <template>
+    
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@******************************************@@@@@@@@@@@@@@@@@@ -->
+    <!-- ##############################   External CSS for this element styling  ################## -->
+    <link rel="stylesheet" href="my-element.css">
+    <!-- ##############################******************************************################## -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+  
+    
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@********************###########@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <!-- ##############################     Moal Dialog    ######################################## -->
+    <paper-action-dialog id="taskDialog" heading="Task Details" >
+        <form>
+        <div>
+          <paper-input id="task" label="task Description">
+          </paper-input>
+        </div>
+        <div>   
+            <paper-autogrow-textarea id="contentArea">
+              <textarea id="content" placeholder="type tasks here"></textarea>
+            </paper-autogrow-textarea>
+        </div>
+        </form>
+        <paper-button affirmative autofocus on-click="{{addTask}}">Add Task</paper-button>
+        </paper-action-dialog>
+    <!-- ##############################******************************************################## -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@********************************************@@@@@@@@@@@@@@@@@@@ -->
+    <!-- ##################### DATABASE Connection elements via firebase element ################## -->
+        <firebase-element
+          id="ref"
+          location="https://metest.firebaseio.com/goals"
+          data="{{goals}}"
+          keys="{{keys}}">
+          </firebase-element>
+    <!-- ##############################******************************************################## -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@********************************************@@@@@@@@@@@@@@@@@@@ -->
+    <!-- ##################### DATABASE Connection elements via local ajax call ################### -->
+        <core-ajax
+              auto
+              loading=true
+              url="/api/things"
+              handleAs="json"
+              response="{{views}}">
+        </core-ajax>
+    <!-- ##############################******************************************################## -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@***************************************@@@@@@@@@@@@@@@@@@@@@@@@ -->
+    <!-- ########################### SCAFFOLDING BY CUSTOM POLYMER ELEMENT ######################## -->  
+    <core-drawer-panel transition id="core_drawer_panel" touch-action>
+        <section id ="section" drawer>
+          <core-menu selected="1" selectedindex="1" id="core_menu"> 
+            <core-submenu id="core_submenu" icon="settings" label="Todos">
+              <core-item id="core_item1" label="This week" horizontal center layout></core-item>
+              <core-item id="core_item2" label="Last week" horizontal center layout></core-item>
+             </core-submenu>
+            <core-submenu active id="core_submenu1" icon="settings" label="iDid">
+              <core-item id="core_item3" label="This year" horizontal center layout></core-item>
+              <core-item id="core_item4" label="Last year" horizontal center layout></core-item>
+              <core-item id="core_item5" label="Timeline" horizontal center layout></core-item>
+             </core-submenu>
+           </core-menu>
+         </section>
+        <section id ="section" main>
+          <core-header-panel condenses flex mode="waterfall-tall" id="core_header_panel">
+            <core-toolbar id="core_toolbar" class="tall">
+              <core-icon-button icon="menu" id="core_icon_button" on-tap="{{showDrawer}}" theme="core-light-theme"></core-icon-button>
+                <div id="div" flex></div>
+               <core-icon-button icon="search" id="core_icon_button1"></core-icon-button>
+              <paper-menu-button>
+                <paper-icon-button icon="more-vert"></paper-icon-button>
+                <paper-dropdown class="dropdown" halign="right">
+                    <core-menu class="menu">
+                      <paper-item>Settings</paper-item>
+                      <paper-item>Help</paper-item>
+                      <paper-item>Feedback</paper-item>
+                     </core-menu>
+                   </paper-dropdown>
+               </paper-menu-button>
+              <div class="bottom ctrlHead indent">
+                What is you goal?
+               </div>
+             </core-toolbar>
+            <div class="bottom indent todo">
+
+            <!-- *************************add task top card*************************** -->
+              <div class = "todoTask" >   
+                <div class="cardHead"> 
+                    
+                 </div>    
+                <div class = "cardBody" >
+                  <form horizontal layout >
+                    <div class="inputGoal">
+                    <div>
+                      <paper-input-decorator auto-complete floatingLabel label="What is your goal ?" id="taskNameDeco" error="Value must start with a number!">
+                         <input id="taskName" value="{{goalName}}" is="core-input" pattern="^[0-9].*">
+                         </paper-input-decorator>
+                     </div>
+                      <div>
+                      <paper-input-decorator auto-complete floatingLabel label="write about it .." id="taskDescDeco" error="Value must start with a number!">
+                         <input id="taskDesc" value="{{goalDesc}}" is="core-input" pattern="^[0-9].*">
+                         </paper-input-decorator>
+                     </div>
+                      <div>
+                      <button on-click="{{addGoal}}">Add Goal</button>
+                      </div>
+                     </div>
+                   </form>
+                  </div>      
+                <div class = "cardFooter" >
+                     <core-icon-button class="room iconbar" icon="room"></core-icon-button>
+                     <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
+                     <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                     <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
+                 </div>   
+             </div>
+            <!-- ************************* end of add task top card *************************** -->
+
+              <!-- ***************************Each card for task display******************** -->       
+              <template repeat="{{view in views}}">        
+                <div class = "todoTask" >   
+                    <div class="cardHead"> 
+                        <span class="toggleComplete">
+                          <paper-toggle-button id="paper_toggle_button"></paper-toggle-button>
+                        </span>
+                        <span class="taskTitle"><strong>{{view.name}}</strong></span>
+                        <span class="arrowDown">
+                          <paper-menu-button>
+                            <paper-icon-button icon="more-vert">
+                            </paper-icon-button>
+                            <paper-dropdown class="dropdown" halign="right">
+                              <core-menu class="menu">
+                                <paper-item>Settings</paper-item>
+                                <paper-item>Help</paper-item>
+                                <paper-item>Feedback</paper-item>
+                              </core-menu>
+                            </paper-dropdown>
+                          </paper-menu-button>
+                          </span>
+                      </div>    
+                <div class = "progress" >
+                 <!--  <paper-progress value="{{goals[key].progress}}" secondaryProgesss="30"></paper-progress> -->
+                 </div>
+                <button on-click="{{opendialog}}">ShowDialog
+                </button>
+                <div class = "cardBody" >
+                  <span class="taskDetails" horizontal start-justified layout>
+                    {{goals[key].goalDesc}}
+                   </span>
+                 </div>
+                <div class = "taskList" >
+                 <!--  <ul>
+                    <template repeat="{{task in goals[key].tasks}}">
+                      <li>{{task.taskItem}}</li>
+                     </template>
+                   </ul> -->
+                 </div>
+                <div class = "cardComment" >        
+                <div class = "cardFooter" >
+                     <core-icon-button class="room iconbar" icon="room"></core-icon-button>
+                     <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
+                     <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                     <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
+                      </div>   
+               </template>
+              <!-- *************************** ## End of cards ## ******************** -->   
+             </div>
+           </core-header-panel>
+         </section>
+       </core-drawer-panel>   
+    <!-- ##############################******************************************################## -->
+    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+   </template>
+  <script>
+    Polymer('my-element',{
+      tryMe : 'hello',
+      goalName : '',
+      goalDesc: '',
+      showDrawer: function(){
+        alert("hello");
+       },
+      addGoal: function(e){
+        e.preventDefault();
+        this.$.ref.push({
+          goalName:this.goalName,
+          goalDesc:this.goalDesc,
+          timestamp:new Date().getTime(),
+          location: "", 
+          favorite:"No",
+          progress:"25"
+        });
+        this.goalName = '';
+        this.goalDesc = '';
+       },
+      addTask: function(e){
+        e.preventDefault();
+        if(this.$.task.value == ''){
+          alert("insert some description");
+          return;
+        };
+        if(this.$.content.value == ''){
+          alert("insert some task comment");
+          return;
+        };
+
+        console.log("title: " , this.$.task.value);
+        console.log("textArea: " , this.$.content.value);
+        this.$.ref.push({
+          tasks:{taskItem:this.$.task.value}
+        });
+        this.$.task.value = '';
+        this.$.content.value = ''
+        },
+      opendialog: function(){
+       this.$.taskDialog.toggle();
+       },
+      opendialogIn: function(e){
+        var key = e.target.templateInstance.model;
+        console.log(key);
+        console.log(this.$.ref.get(key))
+        // this.$.ref.toggle();
+       }
+    });
+   </script>
+ </polymer-element>
+
+
+ <!-- ref -->
+  <!--   $('.infinite-scroll').jscroll({
+        loadingHtml: '<img src="loading.gif" alt="Loading" /> Loading...',
+        padding: 20,
+        nextSelector: 'a.jscroll-next:last',
+        contentSelector: 'li'
+       }); -->
