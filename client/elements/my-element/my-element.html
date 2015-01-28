@@ -11,7 +11,7 @@
   
     
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@********************###########@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-    <!-- ##############################     Moal Dialog    ######################################## -->
+    <!-- ##############################     Modal Dialog    ######################################## -->
     <paper-action-dialog id="taskDialog" heading="Task Details" >
         <form>
         <div>
@@ -47,7 +47,7 @@
         <core-ajax
               auto
               loading=true
-              url="/api/things"
+              url="/api/goals"
               handleAs="json"
               response="{{views}}">
         </core-ajax>
@@ -133,7 +133,7 @@
                         <span class="toggleComplete">
                           <paper-toggle-button id="paper_toggle_button"></paper-toggle-button>
                         </span>
-                        <span class="taskTitle"><strong>{{view.name}}</strong></span>
+                        <span class="taskTitle"><strong>{{view.goalName}}</strong></span>
                         <span class="arrowDown">
                           <paper-menu-button>
                             <paper-icon-button icon="more-vert">
@@ -149,14 +149,14 @@
                           </span>
                       </div>    
                 <div class = "progress" >
-                 <!--  <paper-progress value="{{goals[key].progress}}" secondaryProgesss="30"></paper-progress> -->
+                  <paper-progress value="{{view.taskProgress}}" secondaryProgesss="30"></paper-progress>
                  </div>
                 <button on-click="{{opendialog}}">ShowDialog
                 </button>
                 <div class = "cardBody" >
-                  <!-- <span class="taskDetails" horizontal start-justified layout>
-                    {{goals[key].goalDesc}}
-                   </span> -->
+                  <span class="taskDetails" horizontal start-justified layout>
+                    {{view.goalDesc}}
+                   </span>
                  </div>
                 <div class = "taskList" >
                  <!--  <ul>
