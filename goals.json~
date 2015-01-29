@@ -1,0 +1,38 @@
+{
+    goalName : 'Learn Data science',
+    goalDesc : 'Data science will help me to know more about data pattern',
+    userLocation:'sydney',
+    isFav:'no',
+    contact:'0412649744',
+    taskProgress:25,
+    created_by:'rumman',
+    created: '1416355200'
+  }, {
+    goalName : 'Go to space',
+    goalDesc : 'space is the final frontier',
+    userLocation:'brisbane',
+    isFav:'yes',
+    contact:'0402506607',
+    taskProgress:75,
+    created_by:'lia',
+    created: '1416355910'
+  }, {
+    goalName : 'Play tennis',
+    goalDesc : 'get body fit',
+    userLocation:'Melbourne',
+    isFav:'yes',
+    contact:'0433568974',
+    taskProgress:25,
+    created_by:'ruhan',
+    created: "1416355000"
+  }, {
+    goalName : 'Build swimming pool',
+    goalDesc : 'Get a swimming pool for backyard',
+    userLocation:'Perth',
+    isFav:'Yes',
+    contact:'0412649744',
+    taskProgress:55,
+    created_by:'rumman',
+    created: "1416355200"
+  } 
+ 

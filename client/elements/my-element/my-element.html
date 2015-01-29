@@ -32,10 +32,10 @@
 
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@********************************************@@@@@@@@@@@@@@@@@@@ -->
     <!-- ##################### DATABASE Connection elements via firebase element ################## -->
-       <!--  <firebase-element
+      <!--   <firebase-element
           id="ref"
           location="https://metest.firebaseio.com/goals"
-          data="{{goals}}"
+          data="{{views}}"
           keys="{{keys}}">
           </firebase-element> -->
     <!-- ##############################******************************************################## -->
@@ -45,12 +45,20 @@
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@********************************************@@@@@@@@@@@@@@@@@@@ -->
     <!-- ##################### DATABASE Connection elements via local ajax call ################### -->
         <core-ajax
-              auto
-              loading=true
-              url="/api/goals"
-              handleAs="json"
-              response="{{views}}">
-        </core-ajax>
+          auto
+          loading=true
+          url="/api/goals"
+          handleAs="json"
+          response="{{views}}">
+          </core-ajax>
+        <core-ajax id="ajax" 
+          auto="false" 
+          method="POST" 
+          contentType="application/json" 
+          url="/api/goals"
+          body='{"goalName":"{{goalName}}", "goalDesc":"{{goalDesc}}","location": "sydney", "isFav":false,"taskProgress":"25"}' 
+          response="{{response}}">
+         </core-ajax>
     <!-- ##############################******************************************################## -->
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
@@ -103,16 +111,19 @@
                     <div class="inputGoal">
                     <div>
                       <paper-input-decorator auto-complete floatingLabel label="What is your goal ?" id="taskNameDeco" error="Value must start with a number!">
-                         <input id="taskName" value="{{goalName}}" is="core-input" pattern="^[0-9].*">
+                         <input id="taskName" value="{{goalName}}" is="core-input">
                          </paper-input-decorator>
                      </div>
                       <div>
                       <paper-input-decorator auto-complete floatingLabel label="write about it .." id="taskDescDeco" error="Value must start with a number!">
-                         <input id="taskDesc" value="{{goalDesc}}" is="core-input" pattern="^[0-9].*">
+                         <input id="taskDesc" value="{{goalDesc}}" is="core-input" >
                          </paper-input-decorator>
                      </div>
                       <div>
-                      <button on-click="{{addGoal}}">Add Goal</button>
+                      <!-- use local ajax -->
+                      <button on-click="{{addGoalLocal}}">Add Goal</button>
+                      <!-- use firebase connection -->
+                       <!-- <button on-click="{{addGoal}}">Add Goal</button> -->
                       </div>
                      </div>
                    </form>
@@ -166,10 +177,15 @@
                    </ul> -->
                  </div>
                 <div class = "cardComment" >        
-                <div class = "cardFooter" >
+                <div class = "cardFooter">
                      <core-icon-button class="room iconbar" icon="room"></core-icon-button>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
-                     <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                      <template bind if="{{ view.isFav }}">
+                        <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
+                      </template>
+                      <template ref="{{ view.isFav }}">
+                        <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                      </template>
                      <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
                       </div>   
                </template>
@@ -187,23 +203,32 @@
       tryMe : 'hello',
       goalName : '',
       goalDesc: '',
-      showDrawer: function(){
+      showDrawer   : function (){
         alert("hello");
        },
-      addGoal: function(e){
+      addGoal      : function (e){
         e.preventDefault();
         this.$.ref.push({
           goalName:this.goalName,
           goalDesc:this.goalDesc,
           timestamp:new Date().getTime(),
           location: "", 
-          favorite:"No",
-          progress:"25"
+          isFav:false,
+          taskProgress:"25"
         });
         this.goalName = '';
         this.goalDesc = '';
        },
-      addTask: function(e){
+      addGoalLocal : function (event, detail, sender){
+        // event.preventDefault();
+        this.$.ajax.go();
+        this.goalName = '';
+        this.goalDesc = '';
+        },
+      isfav :function(){
+      console.log() 
+      },  
+      addTask      : function (e){
         e.preventDefault();
         if(this.$.task.value == ''){
           alert("insert some description");
@@ -222,10 +247,10 @@
         this.$.task.value = '';
         this.$.content.value = ''
         },
-      opendialog: function(){
+      opendialog   : function (){
        this.$.taskDialog.toggle();
        },
-      opendialogIn: function(e){
+      opendialogIn : function (e){
         var key = e.target.templateInstance.model;
         console.log(key);
         console.log(this.$.ref.get(key))
