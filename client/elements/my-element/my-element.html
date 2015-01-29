@@ -59,6 +59,13 @@
           body='{"goalName":"{{goalName}}", "goalDesc":"{{goalDesc}}","location": "sydney", "isFav":false,"taskProgress":"25"}' 
           response="{{response}}">
          </core-ajax>
+        <core-ajax id="fav" 
+          auto="false" 
+          method="PUT" 
+          contentType="application/json" 
+          url="/api/goals/{"isFav":true}" 
+          response="{{response}}">
+         </core-ajax>
     <!-- ##############################******************************************################## -->
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
@@ -180,11 +187,11 @@
                 <div class = "cardFooter">
                      <core-icon-button class="room iconbar" icon="room"></core-icon-button>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
-                      <template bind if="{{ view.isFav }}">
+                      <template bind if="{{ view.isFav == true }}">
                         <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
                       </template>
-                      <template ref="{{ view.isFav }}">
-                        <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                      <template bind if ="{{ view.isFav == false}}">
+                        <core-icon-button class="star iconbar" on-click="{{makeFav}}" icon="star"></core-icon-button>
                       </template>
                      <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
                       </div>   
@@ -225,8 +232,9 @@
         this.goalName = '';
         this.goalDesc = '';
         },
-      isfav :function(){
-      console.log() 
+      makeFav :function(){
+        // alert("hello");
+        this.$.fav.go();
       },  
       addTask      : function (e){
         e.preventDefault();
