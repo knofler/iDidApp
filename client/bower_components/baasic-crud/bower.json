@@ -1,0 +1,24 @@
+{
+  "name": "baasic-crud",
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.2",
+    "baasic-ajax": "Baasic/baasic-sdk-polymer-core-ajax#>=0.1.0"
+  },
+  "description": "Baasic CRUD (Create-Read-Update-Delete) Ajax Web component.",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "baasic",
+    "ajax",
+    "crud"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/baasic/baasic-sdk-polymer-core-crud",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

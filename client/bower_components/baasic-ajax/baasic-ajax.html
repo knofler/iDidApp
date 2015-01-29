@@ -1,0 +1,75 @@
+<!--
+Copyright (c) 2014 Mono d.o.o. All rights reserved.
+Code distributed by Mono as a part of the Baasic project
+-->
+
+<!--
+@group Baasic Polymer Elements
+
+The `baasic-ajax` element inherits the core-ajax element, adding the additional authentication and access token sliding expiration functionality.
+
+@element baasic-ajax
+@status beta
+@homepage www.baasic.com
+-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../baasic-globals/globals-import.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<polymer-element name="baasic-ajax" extends="core-ajax" hidden>
+    <template>
+        <shadow>
+        </shadow>
+    </template>
+    <script>
+        Polymer('baasic-ajax', {
+            go: function () {
+                var headers = this.headers || {};
+                var baasicUser = Baasic.Cache.getItem('baasicUser');
+                if (baasicUser && baasicUser.accessToken) {
+                    headers['Authorization'] = baasicUser.tokenType + ' ' + baasicUser.accessToken;
+                    //referesh token sliding expiration time
+                    baasicUser.expiresAbsolute = new Date(new Date().getTime() + (baasicUser.expiresIn * 1000));
+                    Baasic.Cache.setItem('baasicUser', baasicUser, {
+                        expirationAbsolute: baasicUser.expiresAbsolute,
+                        expirationSliding: null,
+                        priority: Cache.Priority.HIGH,
+                        callback: null
+                    });
+                }
+                else if (!headers['Authorization']) {
+                    headers['Authorization'] = '';
+                }
+                this.headers = headers;
+
+                return this.super();
+            },
+            /**
+           * The `request` method will return a Promise that will resolve or reject. Author: https://github.com/spirosikmd/ajax-promise/blob/master/ajax-promise.html
+           *
+           * @method request
+           * @return {Promise} Returns a Promise that will either resolve or reject.
+           */
+            request: function () {
+                var _this = this;
+                return new Promise(function (resolve, reject) {
+                    var xhr = _this.go();
+                    xhr.onload = function () {
+                        // Resolve could be called even on 404 etc so we should check the status.
+                        if (_this.isSuccess(xhr)) {
+                            var response = _this.evalResponse(xhr);
+                            resolve({ response: response, xhr: xhr });
+                        } else {
+                            var response = xhr.status + ': ' + xhr.responseText;
+                            reject({ response: Error(response), xhr: xhr });
+                        }
+                    };
+                    // Handle network errors
+                    xhr.onerror = function () {
+                        reject(Error("Network Error"));
+                    };
+                });
+            }
+        });
+    </script>
+</polymer-element>

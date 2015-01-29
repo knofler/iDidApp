@@ -1,0 +1,34 @@
+{
+  "name": "baasic-ajax",
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.2",
+    "core-ajax": "Polymer/core-ajax#>=0.4.2",
+    "baasic-globals": "Baasic/baasic-sdk-polymer-core-globals#>=0.1.0"
+  },
+  "description": "Baasic version of the core Ajax Web component.",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "baasic",
+    "ajax"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/baasic/baasic-sdk-polymer-core-ajax",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "0.1.6",
+  "_release": "0.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.6",
+    "commit": "ebf4d963f262963198e12fb2c6f07eeecc1624d9"
+  },
+  "_source": "git://github.com/Baasic/baasic-sdk-polymer-core-ajax.git",
+  "_target": ">=0.1.0",
+  "_originalSource": "Baasic/baasic-sdk-polymer-core-ajax"
+}

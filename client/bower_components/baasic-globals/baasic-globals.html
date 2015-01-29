@@ -1,0 +1,97 @@
+<!--
+Copyright (c) 2014 Mono d.o.o. All rights reserved.
+Code distributed by Mono as a part of the Baasic project
+-->
+
+<!--
+@group Baasic Polymer Elements
+
+The `baasic-globals` element provides support for storing global settings and lookups.
+    <baasic-globals id="globals"></baasic-globals>
+
+@element baasic-globals
+@status beta
+@homepage www.baasic.com
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="globals-import.html">
+
+<polymer-element name="baasic-globals" hidden>
+    <template>
+        <baasic-ajax id="axRoles"
+                     url="{{config.baseUrl}}/{{config.version}}/{{config.application}}/role/?rpp=100&sort=Name|asc"
+                     handleas="json"
+                     contenttype="application/json"
+                     method="GET"
+                     ></baasic-ajax>
+
+        <baasic-ajax id="axActions"
+                     url="{{config.baseUrl}}/{{config.version}}/{{config.application}}/lookup/?embed=accessAction"
+                     handleas="json"
+                     contenttype="application/json"
+                     method="GET"
+                     ></baasic-ajax>
+
+    </template>
+    <script>
+        (function () {
+            /**
+            * Global object storing application-wide configration settings.
+            * 
+            */
+            var config = {
+                //Add additional admin roles here
+                adminRoles: ['Administrators'],
+                //base Baasic service URL
+                baseUrl: "http://api.baasic.com",
+                //Baasic version
+                version: "beta",
+                //Baasic application
+                application: "WebComponents",
+                //cache expiration time for lookup storage in seconds
+                cacheExpiration: 7200
+            };
+            Polymer('baasic-globals', {
+                ready: function () {
+                    //assignment of the global singleton variable to the object instance variable per http://stackoverflow.com/questions/24867741/polymer-global-variables that fixes the behavior from http://www.polymer-project.org/docs/polymer/polymer.html#global
+                    this.config = config;
+                },
+                get baasicUser() {
+                    var toReturn = Baasic.Cache.getItem('baasicUser') || {};
+                    return toReturn;
+                },
+                get roles() {
+                    return this.getFromCache(this.$.axRoles, 'baasicRoles', 'item');
+                },
+                get actions() {
+                    return this.getFromCache(this.$.axActions, 'baasicActions', 'accessAction');
+                },
+                getFromCache: function (ajax, cacheKey, collectionKey) {
+                    var _this = this;
+                    //Loading of lookup data from the service is implemented via promises, as baasic-ajax implemented a request method that returns a promise to support async loading. 
+                    //An alternative way would be to use the standard ajax element with xhrArgs object { sync: true}, but that blocks the execution until the response from a remote server is received
+                    //Browsers that do not support HTML5 Promises (mainly IE at this moment) can use the polyfill from https://github.com/jakearchibald/es6-promise, it is included in the globals-import.html list of imports.
+                    return new Promise(function (resolve, reject) {
+                        if (!Baasic.Cache.getItem(cacheKey)) {
+                            ajax.request().then(function (response) {
+                                Baasic.Cache.setItem(cacheKey, response.response[collectionKey], {
+                                    expirationAbsolute: new Date(new Date().getTime() + (_this.config.cacheExpiration * 1000)),
+                                    expirationSliding: null,
+                                    priority: Cache.Priority.HIGH,
+                                    callback: null
+                                });
+                                resolve({ data: response.response[collectionKey] });
+                            }, function (error) {
+                                reject({ data: null });
+                            }.bind(_this));
+                        }
+                        else {
+                            resolve({ data: Baasic.Cache.getItem(cacheKey) });
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</polymer-element>

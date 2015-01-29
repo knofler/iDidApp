@@ -1,0 +1,24 @@
+{
+  "name": "baasic-ajax",
+  "dependencies": {
+    "polymer": "Polymer/polymer#>=0.4.2",
+    "core-ajax":  "Polymer/core-ajax#>=0.4.2",
+    "baasic-globals":  "Baasic/baasic-sdk-polymer-core-globals#>=0.1.0"
+  },
+  "description": "Baasic version of the core Ajax Web component.",
+  "keywords": [
+    "polymer",
+    "web-components",
+    "baasic",
+    "ajax"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/baasic/baasic-sdk-polymer-core-ajax",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
