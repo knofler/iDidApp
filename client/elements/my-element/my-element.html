@@ -63,7 +63,7 @@
           auto="false"
           method="PUT" 
           contentType="application/json" 
-          url="/api/goals/54ca4255d696c0900d672525"
+          url="/api/goals/{{view_id}}"
           body='{"isFav":"true"}' 
           response="{{response}}">
          </core-ajax>
@@ -219,7 +219,7 @@
       tryMe : 'hello',
       goalName : '',
       goalDesc: '',
-      item_id:'54ca39b4d696c0900d672524',
+      view_id:'',
       showDrawer   : function (){
         alert("hello");
        },
@@ -242,7 +242,9 @@
         this.goalName = '';
         this.goalDesc = '';
         },
-      makeFav :function(){
+      makeFav :function(e){
+        console.log(e.target.templateInstance.model.view._id);
+        this.view_id = e.target.templateInstance.model.view._id;
         this.$.fav.go();
       },  
       addTask      : function (e){
