@@ -96,10 +96,11 @@
       }
       .inputGoal {
         position: relative;
-        top: 25px;
-        padding-bottom: 32px;
-        margin-bottom: 20px;
+    /*    top: 25px;*/
+        padding-bottom: 100px;
+        margin-bottom: 95px;
         height: 50px;
+        width: 100%;
         /* border-bottom: 1px solid #444; */
       }
       .inputGoalDesc {
@@ -138,7 +139,7 @@
       }
        .taskDetails{
         margin-right: 30px;
-        margin-left: 20px;
+  /*      margin-left: 20px;*/
         padding:15px 2px;
         margin-bottom: 5px;
       }
@@ -158,6 +159,13 @@
         padding-bottom: 0px;
         margin-bottom: 0px;
       }
+      .cardBody{
+        padding: 5px;
+        font-size: 14px;
+        letter-spacing: 4px;
+        color: #444;
+        padding-right: 2px;
+      }
       .cardFooter{
         padding: 10px;
         background-color: #f6f7f8;
@@ -174,21 +182,31 @@
       .reply:hover{
         color:lightblue;
       }
+      .note-add:hover{
+        color:#3e50b4;
+      }
       .arrowDown{
         float: right;
-        margin-top:-21px; 
+        margin-top:-9px; 
       }
       paper-progress{
-        height: 20px;
-        margin-top: 10px;
-        margin-left:5px;
+        height: 2px;
+        margin-top: 15px;
+/*        margin-left:8px;*/
         /*margin-right:10px;*/
         width:100%;
         border: 1px solid #ccc;
         overflow: hidden;
       }
       paper-progress::shadow #activeProgress {
-        background-color: #f05c4e;
+        background: #63b6db; /* Old browsers */
+        background: -moz-linear-gradient(top,  #63b6db 0%, #309dcf 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63b6db), color-stop(100%,#309dcf)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #63b6db 0%,#309dcf 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #63b6db 0%,#309dcf 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #63b6db 0%,#309dcf 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  #63b6db 0%,#309dcf 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63b6db', endColorstr='#309dcf',GradientType=0 ); /* IE6-9 */
         border-bottom-right-radius: 8px;
         border-top-right-radius: 8px
       }
@@ -197,6 +215,7 @@
       }*/
       paper-progress::shadow #progressContainer {
         background-color:#c8c8c8;
+        height: 2px;
       }
 
       .cardDesc{
@@ -215,4 +234,24 @@
       }
       .isFav{
         color: green;
+      }
+      .buttonAdd{
+        margin-top: 10px;
+        margin-bottom: 15px;
+        margin-left: -5px;
+      }
+      paper-button{
+        background: #4285f4;
+      }
+      paper-button[raised].colored {
+        background: #4285f4;
+        color: #fff;
+      }
+
+      paper-input-decorator::shadow .input-body{
+        width: 100%;
+        font-size: 16px;
+      }
+       paper-input-decorator::shadow #floated-label{
+        width: 300px;
       }

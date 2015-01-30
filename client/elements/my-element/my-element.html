@@ -121,7 +121,7 @@
                 <div class="cardHead"> 
                     
                  </div>    
-                <div class = "cardBody" >
+                <div class = "cardBody">
                   <form horizontal layout >
                     <div class="inputGoal">
                     <div>
@@ -134,9 +134,9 @@
                          <input id="taskDesc" value="{{goalDesc}}" is="core-input" >
                          </paper-input-decorator>
                      </div>
-                      <div>
                       <!-- use local ajax -->
-                      <button on-click="{{addGoalLocal}}">Add Goal</button>
+                      <div class="buttonAdd">
+                      <paper-button raised on-click="{{addGoalLocal}}">Add Goal</paper-button>
                       <!-- use firebase connection -->
                        <!-- <button on-click="{{addGoal}}">Add Goal</button> -->
                       </div>
@@ -162,7 +162,7 @@
                         <span class="taskTitle"><strong>{{view.goalName}}</strong></span>
                         <span class="arrowDown">
                           <paper-menu-button>
-                            <paper-icon-button icon="more-vert">
+                            <paper-icon-button icon="expand-more">
                             </paper-icon-button>
                             <paper-dropdown class="dropdown" halign="right">
                               <core-menu class="menu">
@@ -177,8 +177,7 @@
                 <div class = "progress" >
                   <paper-progress value="{{view.taskProgress}}" secondaryProgesss="30"></paper-progress>
                  </div>
-                <button on-click="{{opendialog}}">ShowDialog
-                </button>
+               <!--  <button on-click="{{opendialog}}">ShowDialog</button> -->
                 <div class = "cardBody" >
                   <span class="taskDetails" horizontal start-justified layout>
                     {{view.goalDesc}}
@@ -193,9 +192,7 @@
                  </div>
                 <div class = "cardComment" >        
                 <div class = "cardFooter">
-                 
-                      </div>   
-                          <core-icon-button class="room iconbar" icon="room"></core-icon-button>
+                  <core-icon-button class="room iconbar" icon="room"></core-icon-button>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
                       <template bind if="{{ view.isFav == true }}">
                         <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
@@ -204,6 +201,8 @@
                         <core-icon-button class="star iconbar" on-click="{{makeFav}}" icon="star"></core-icon-button>
                       </template>
                      <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
+                     <core-icon-button class="note-add iconbar" icon="note-add" on-click="{{opendialog}}"></core-icon-button>
+                </div>      
                </template>
               <!-- *************************** ## End of cards ## ******************** -->   
              </div>
@@ -267,13 +266,7 @@
         this.$.content.value = ''
         },
       opendialog   : function (){
-       this.$.taskDialog.toggle();
-       },
-      opendialogIn : function (e){
-        var key = e.target.templateInstance.model;
-        console.log(key);
-        console.log(this.$.ref.get(key))
-        // this.$.ref.toggle();
+        this.$.taskDialog.toggle();
        }
     });
    </script>
