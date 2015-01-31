@@ -255,3 +255,15 @@
        paper-input-decorator::shadow #floated-label{
         width: 300px;
       }
+      paper-toggle-button::shadow #toggleContainer{
+       height: 12px;
+       margin-right: 2px;
+      margin-left: -12px;
+      }
+      paper-toggle-button::shadow #toggleButton{
+      top: -1px;
+  height: 14px;
+  width: 15px;
+      }
+
+
