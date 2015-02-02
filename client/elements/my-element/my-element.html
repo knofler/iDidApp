@@ -57,7 +57,8 @@
           contentType="application/json" 
           url="/api/goals"
           body='{"goalName":"{{goalName}}", "goalDesc":"{{goalDesc}}","location": "sydney", "isFav":false,"taskProgress":"25"}' 
-          response="{{response}}">
+          response="{{newViews}}"
+          on-core-response="{{handleResponse}}">
          </core-ajax>
         <core-ajax id="fav" 
           auto="false"
@@ -70,13 +71,14 @@
     <!-- ##############################******************************************################## -->
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
-       <baasic-crud id="crudElement"
+  <!--      <baasic-crud id="crudElement"
                 geturl="/api/goals/"
                 posturl="/api/goals/"
                 puturl="/api/goals/"
                 deleteurl="/api/goals/"
                 on-get-completed="{{handleCrudCompleted}}"
-                on-get-error="{{handleCrudError}}"></baasic-crud>
+                on-get-error="{{handleCrudError}}">
+      </baasic-crud> -->
 
     <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@***************************************@@@@@@@@@@@@@@@@@@@@@@@@ -->
     <!-- ########################### SCAFFOLDING BY CUSTOM POLYMER ELEMENT ######################## -->  
@@ -215,6 +217,7 @@
    </template>
   <script>
     Polymer('my-element',{
+      newViews: '',
       tryMe : 'hello',
       goalName : '',
       goalDesc: '',
@@ -245,7 +248,7 @@
         console.log(e.target.templateInstance.model.view._id);
         this.view_id = e.target.templateInstance.model.view._id;
         this.$.fav.go();
-      },  
+       },  
       addTask      : function (e){
         e.preventDefault();
         if(this.$.task.value == ''){
@@ -267,6 +270,9 @@
         },
       opendialog   : function (){
         this.$.taskDialog.toggle();
+       },
+      handleResponse  : function(e){
+       console.log(e.detail.response);
        }
     });
    </script>

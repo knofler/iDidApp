@@ -31,25 +31,252 @@
 }
 
 /**************Polymer custom element css******************/
-/*Styling checkbox:*/
+:host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        top: 0px;
+        left: 0px;
+      }
+      .todo{
+        padding: 6px;
+        padding-right: 2px;
+        position: relative;
+        /*border: 1px dotted #3D444B;*/
+        background-color: #e9eaed;
+        height: auto;
+        margin-bottom: 50px;
+        padding-bottom: 100px;
+        /*margin-top: 40px;*/
+        /*margin-left: 20px;*/
+      }
+      .todoTask{
+        padding: 20px;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px #666;
+  /*    border-bottom-left-radius: 8px;
+        border-top-left-radius: 5px;*/
+        margin-left: 14px;
+        margin-right: 10px;
+       /*border-radius: 9px/40px;*/
+       margin-bottom: 13px;
+       margin-top:13px;
+       max-height: 450px;
+       /*width: 50%*/
+      }
+      #core_drawer_panel {
+        position: absolute;
+        /*top: 300px;*/
+        right: 0px;
+        bottom: 0px;
+        /*left: 620px;*/
+      }
+      #section {
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        background-color: rgb(250, 250, 250);
+      }
+      #section1 {
+        height: 100%;
+        box-sizing: border-box;
+        background-color: rgb(221, 221, 221);
+      }
+      #sectionInput {
+        height: 75px;
+        box-sizing: border-box;
+        background-color: rgb(221, 221, 221);
+      }
+      #core_menu_button {
+        left: 1130px;
+        top: 410px;
+      }
+      #core_item {
+        left: 1040px;
+        top: 400px;
+      }
+      #core_header_panel {
+        width: 100%;
+        height: 700px;
+        left: -6px;
+        top: -10px;
+        position: absolute;
+      }
+      #core_toolbar {
+        color: rgb(241, 241, 241);
+        fill: rgb(241, 241, 241);
+        background-color: rgb(66, 133, 244);
+        padding-top: 13px;
+      }
+      #div1{
+        padding-top: 25px;
+        margin-left: 400px;
+      }
+      #section2 {
+        height: 5000px;
+        background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
+      }
+      #core_icon_button3 {
+        left: 18px;
+        top: 60px;
+        position: absolute;
+      }
+      #core_menu {
+        font-size: 16px;
+        left: 12px;
+        top: 2px;
+        position: absolute;
+      }
+      .inputGoal {
+        position: relative;
+    /*    top: 25px;*/
+        padding-bottom: 100px;
+        margin-bottom: 95px;
+        height: 50px;
+        width: 100%;
+        /* border-bottom: 1px solid #444; */
+      }
+      .inputGoalDesc {
+        left: 59px;
+        padding-top: 5px;
+        position: absolute;
+        top: 14px;
+        /*border: 1px solid red;*/
+      }
+      #core_icon_button4 {
+        left: 1110px;
+        top: 400px;
+      }
+      #core_tooltip {
+        left: 90px;
+        top: 38px;
+        position: absolute;
+      }
 
-/*To change the ink color for checked state:*/
-paper-checkbox::shadow #ink[checked] {
-  color: #4285f4;
-}
+      #paper_button {
+        left: -250px;
+        top: -182px;
+        position: absolute;
+      }
+      #paper_checkbox {
+        left: 140px;
+        top: 88px;
+        position: absolute;
+      }
+      #paper_toggle_button {
+        /*left: 120px;
+        top: 98px;*/
+        position: relative;
+        /*padding: 20px;*/
+        /*border: 2px solid red;*/
+      }
+       .taskDetails{
+        margin-right: 30px;
+  /*      margin-left: 20px;*/
+        padding:15px 2px;
+        margin-bottom: 5px;
+      }
+      .taskTitle{
+       
+      }
+      .iconbar{
+        color: #ddd;
+      }
+   
+      .menu{
+        color: #444;
+      }
+      .cardHead{
+        /*border-bottom: 1px solid #cdcdcc;*/
+        padding: 10px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+      }
+      .cardBody{
+        padding: 5px;
+        font-size: 14px;
+        letter-spacing: 4px;
+        color: #444;
+        padding-right: 2px;
+      }
+      .cardFooter{
+        padding: 10px;
+        background-color: #f6f7f8;
+      }
+      .room:hover{
+        color: #3B78E7;
+      }
+      .phone:hover{
+        color: #0D904F;
+      }
+      .star:hover{
+        color:orange;
+      }
+      .reply:hover{
+        color:lightblue;
+      }
+      .note-add:hover{
+        color:#3e50b4;
+      }
+      .arrowDown{
+        float: right;
+        margin-top:-9px; 
+      }
 
-/*To change the checkbox checked color:*/
-paper-checkbox::shadow #checkbox.checked {
-  background-color: #4285f4;
-  border-color: #4285f4;
-}
+  
 
-/*To change the ink color for unchecked state:*/
-paper-checkbox::shadow #ink {
-  color: #b5b5b5;
-}
+      .cardDesc{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+  
+      #taskDialog{
+        /*display: none;*/
+      }
+      .ctrlHead{
+        padding-top: 20px;
+        color: #444;
+      }
+      .isFav{
+        color: green;
+      }
+      .buttonAdd{
+        margin-top: 10px;
+        margin-bottom: 15px;
+        margin-left: -5px;
+      }
+      paper-button{
+        background: #4285f4;
+      }
+      paper-button[raised].colored {
+        background: #4285f4;
+        color: #fff;
+      }
 
-/*To change the checbox unchecked color:*/
-paper-checkbox::shadow #checkbox {
-  border-color: #b5b5b5;
-}
+      paper-input-decorator::shadow .input-body{
+        width: 100%;
+        font-size: 16px;
+      }
+       paper-input-decorator::shadow #floated-label{
+        width: 300px;
+      }
+      paper-toggle-button::shadow #toggleContainer{
+       height: 12px;
+       margin-right: 2px;
+      margin-left: -12px;
+      }
+      paper-toggle-button::shadow #toggleButton{
+      top: -1px;
+      height: 14px;
+      width: 15px;
+      }
+      paper-progress{
+        width: 100%;
+      }
+      .holdTaskul{
+        margin-left: -41px;
+      }
+      
+    
+
+

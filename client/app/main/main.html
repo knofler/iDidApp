@@ -1,1 +1,136 @@
-<my-element></my-element>
+<core-drawer-panel transition id="core_drawer_panel" touch-action>
+        <section id ="section" drawer>
+          <core-menu selected="1" selectedindex="1" id="core_menu"> 
+            <core-submenu id="core_submenu" icon="settings" label="Todos">
+              <core-item id="core_item1" label="This week" horizontal center layout></core-item>
+              <core-item id="core_item2" label="Last week" horizontal center layout></core-item>
+             </core-submenu>
+            <core-submenu active id="core_submenu1" icon="settings" label="iDid">
+              <core-item id="core_item3" label="This year" horizontal center layout></core-item>
+              <core-item id="core_item4" label="Last year" horizontal center layout></core-item>
+              <core-item id="core_item5" label="Timeline" horizontal center layout></core-item>
+             </core-submenu>
+           </core-menu>
+         </section>
+        <section id ="section" main>
+          <core-header-panel condenses flex mode="waterfall-tall" id="core_header_panel">
+            <core-toolbar id="core_toolbar" class="tall">
+              <core-icon-button icon="menu" id="core_icon_button" on-tap="{{showDrawer}}" theme="core-light-theme"></core-icon-button>
+                <div id="div" flex></div>
+      <paper-dropdown-menu label="What is your Goal" relative="" layout="" inline="" horizontal="" center="" tabindex="0">
+        <paper-dropdown class="dropdown core-transition core-closed" tabindex="-1" >
+          <core-menu class="menu">
+              <paper-item tabindex="0">Apple fritter</paper-item>
+              <paper-item tabindex="0">Croissant</paper-item>
+              <paper-item tabindex="0">Donut</paper-item>
+              <paper-item tabindex="0">Financier</paper-item>
+              <paper-item tabindex="0">Jello</paper-item>
+              <paper-item tabindex="0">Madeleine</paper-item>
+              <paper-item tabindex="0">Pound cake</paper-item>
+              <paper-item tabindex="0">Pretzel</paper-item>
+              <paper-item tabindex="0">Sfogliatelle</paper-item>
+          </core-menu>
+        </paper-dropdown>
+      </paper-dropdown-menu>
+              </core-dropdown-menu>
+            
+             </core-toolbar>
+            <div class="bottom indent todo">
+
+            <!-- *************************add task top card*************************** -->
+              <div class = "todoTask" >   
+                <div class="cardHead"> 
+                    
+                 </div>    
+                <div class = "cardBody">
+                  <form horizontal layout >
+                    <div class="inputGoal">
+                    <div>
+                      <paper-input-decorator auto-complete floatingLabel label="What is your goal ?" id="taskNameDeco" error="Value must start with a number!">
+                         <input id="taskName" ng-model="formdata.goalName" is="core-input">
+                         </paper-input-decorator>
+                     </div>
+                      <div>
+                      <paper-input-decorator auto-complete floatingLabel label="write about it .." id="taskDescDeco" error="Value must start with a number!">
+                         <input id="taskDesc" ng-model="formdata.goalDesc" is="core-input" >
+                         </paper-input-decorator>
+                     </div>
+                      <!-- use local ajax -->
+                      <div class="buttonAdd">
+                      <paper-button raised ng-click="addGoals()">Add Goal</paper-button>
+                      <!-- use firebase connection -->
+                       <!-- <button on-click="{{addGoal}}">Add Goal</button> -->
+                      </div>
+                     </div>
+                   </form>
+                  </div>      
+                <div class = "cardFooter" >
+                     <core-icon-button class="room iconbar" icon="room"></core-icon-button>
+                     <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
+                     <core-icon-button class="star iconbar" icon="star"></core-icon-button>
+                     <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
+                 </div>   
+             </div>
+            <!-- ************************* end of add task top card *************************** -->
+
+       <!-- ***************************Each card for task display******************** -->       
+        <ul class="holdTaskul" ng-repeat="view in filtered = views | orderBy:'-created'">      
+                <div class = "todoTask" >   
+                    <div class="cardHead"> 
+                        <span class="toggleComplete">
+                          <paper-toggle-button id="paper_toggle_button"></paper-toggle-button>
+                        </span>
+                        <span class="taskTitle"><strong>{{view.goalName}}</strong></span>
+                        <span class="arrowDown">
+                          <paper-menu-button>
+                            <paper-icon-button icon="expand-more">
+                            </paper-icon-button>
+                            <paper-dropdown layered class="dropdown" halign="right">
+                              <core-menu class="menu">
+                                <paper-item>Settings</paper-item>
+                                <paper-item>Help</paper-item>
+                                <paper-item>Feedback</paper-item>
+                              </core-menu>
+                            </paper-dropdown>
+                          </paper-menu-button>
+                          </span>
+                      </div>    
+               
+                  <paper-progress value="{{view.taskProgress}}" secondaryProgesss="30"></paper-progress>
+                
+               <!--  <button on-click="{{opendialog}}">ShowDialog</button> -->
+                <div class = "cardBody" >
+                  <span class="taskDetails" horizontal start-justified layout>
+                    {{view.goalDesc}}
+                   </span>
+                 </div>
+                <div class = "taskList" >
+                 <!--  <ul>
+                    <template repeat="{{task in goals[key].tasks}}">
+                      <li>{{task.taskItem}}</li>
+                     </template>
+                   </ul> -->
+                 </div>
+                <div class = "cardComment" >        
+                <div class = "cardFooter">
+                  <core-icon-button class="room iconbar" icon="room"></core-icon-button>
+                     <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
+                      <template bind if="{{ view.isFav == true }}">
+                        <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
+                      </template>
+                      <template bind if ="{{ view.isFav == false}}">
+                        <core-icon-button class="star iconbar" on-click="{{makeFav}}" icon="star"></core-icon-button>
+                      </template>
+                     <core-icon-button class="reply iconbar" icon="reply"></core-icon-button>
+                     <core-icon-button class="note-add iconbar" icon="note-add" on-click="{{opendialog}}"></core-icon-button>
+                </div>  
+                </ul>    
+              <!-- *************************** ## End of cards ## ******************** -->  
+
+          
+             </div>
+           </core-header-panel>
+         </section>
+       </core-drawer-panel>   
+
+<!-- <my-element></my-element> -->

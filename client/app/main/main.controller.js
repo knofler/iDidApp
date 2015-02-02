@@ -7,10 +7,12 @@ angular.module('serveMeApp')
     $scope.awesomeThings = [];
 
   // ########## API CALLS and Promises #################
-    // $http.get('/api/things').success(function(awesomeThings) {
-    //   $scope.awesomeThings = awesomeThings;
-    //   socket.syncUpdates('thing', $scope.awesomeThings);
-    //   });
+    $http.get('/api/goals').success(function(goals) {
+      $scope.views = goals;
+      socket.syncUpdates('goal', $scope.views);
+      });
+
+    $scope.formData       = {};
     
     // Functions interating with api calls and rendering pages
     $scope.addThing    = function() {
@@ -24,6 +26,15 @@ angular.module('serveMeApp')
       $http.delete('/api/things/' + thing._id);
      };
 
+    $scope.addGoals = function (){
+      $http.post('/api/goals', { 
+        goalName: $scope.formdata.goalName,
+        goalDesc: $scope.formdata.goalDesc,
+        taskProgress: 25,
+        created: new Date()  
+      });
+      $scope.formdata = {}; 
+     };
 
   // scroll to feature included for SPA App
     $scope.scrollTo    = function(id) {
