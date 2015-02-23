@@ -13,6 +13,30 @@ angular.module('serveMeApp')
       });
 
     $scope.formData       = {};
+    $scope.isSelected = "goals"
+    
+                 
+                 $scope.isActive = true;
+                 $scope.onText = "todo";
+                 $scope.offText = "iDid";
+                 $scope.radioOff = true;
+                 $scope.label = "goals";
+                 $scope.onColor = "warning";
+                 $scope.offColor = "success"
+                  // switch-on-color="{{ onColor }}"
+                  // switch-off-color="{{ offColor }}"
+                  // switch-animate="{{ animate }}"
+                  // switch-size="{{ size }}"
+                  // switch-label="{{ label }}"
+                  // switch-icon="{{ icon }}"
+                  // switch-radio-off="{{ radioOff }}"
+                  // switch-label-width="{{ labelWidth }}"
+                  // switch-handle-width="{{ handleWidth }}"
+                  // switch-wrapper="{{ wrapper }}"
+                  // ng-true-value="'yep'"
+                  // ng-false-value="'nope'"
+                  // switch-inverse="{{ inverse }}">
+
     
     // Functions interating with api calls and rendering pages
     $scope.addThing    = function() {
