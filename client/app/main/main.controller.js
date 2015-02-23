@@ -13,7 +13,7 @@ angular.module('serveMeApp')
       });
 
     $scope.formData       = {};
-    $scope.isSelected = "goals"
+    // $scope.isSelected = "goals"
     
                  
                  $scope.isActive = true;

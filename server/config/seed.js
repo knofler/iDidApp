@@ -51,6 +51,7 @@ User.find({}).remove(function() {
 
 Goal.find({}).remove(function() {
   Goal.create({
+    isDone : true,
     goalName : 'Learn Data science',
     goalDesc : 'Data science will help me to know more about data pattern',
     userLocation:'sydney',
@@ -60,6 +61,7 @@ Goal.find({}).remove(function() {
     created_by:'rumman',
     created: '1416355200'
   }, {
+    isDone   : false, 
     goalName : 'Go to space',
     goalDesc : 'space is the final frontier',
     userLocation:'brisbane',
@@ -69,6 +71,7 @@ Goal.find({}).remove(function() {
     created_by:'lia',
     created: '1416355910'
   }, {
+    isDone  : true,
     goalName : 'Play tennis',
     goalDesc : 'get body fit',
     userLocation:'Melbourne',
@@ -78,6 +81,7 @@ Goal.find({}).remove(function() {
     created_by:'ruhan',
     created: "1416355000"
   }, {
+    isDone   : false,
     goalName : 'Build swimming pool',
     goalDesc : 'Get a swimming pool for backyard',
     userLocation:'Perth',
