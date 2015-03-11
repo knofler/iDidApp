@@ -77,13 +77,13 @@
        <!-- ***************************Each card for task display******************** -->       
         <ul class="holdTaskul" ng-repeat="view in filtered = views | orderBy:'-created'">      
                 <div class = "todoTask" >   
-                    <div class="cardHead"> 
+                    <div class="cardHead" ng-click="iDid(view._id)"> 
                         <span class="toggleComplete">
                
               <bs-switch
-                  ng-model="view.isDone"
+                  ng-model="view.isTodo"
                   type="checkbox"
-                  switch-active="{{ isActive }}"
+                  switch-active="{{ view.isActive }}"
                   switch-on-text="{{ onText }}"
                   switch-off-text="{{ offText }}"
                   switch-on-color="{{ onColor }}"

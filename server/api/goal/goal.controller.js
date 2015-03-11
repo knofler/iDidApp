@@ -11,6 +11,16 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of applications by Name
+exports.idid = function(req, res) {
+  var status= req.query.taskstatus;
+  Goal.find(
+    {"isTodo":status},function (err, goals) {
+    if(err) { return handleError(res, err); }
+    return res.json(goals);
+  });
+};
+
 // Get a single goal
 exports.show = function(req, res) {
   Goal.findById(req.params.id, function (err, goal) {
