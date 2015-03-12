@@ -81,6 +81,10 @@ angular.module('serveMeApp')
          taskProgress: 100  
       })
       }
+  $scope.hideMap     = function(id){
+    console.log("#"+id)
+    $("#"+id).toggle();
+   };
     
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
@@ -97,7 +101,7 @@ angular.module('serveMeApp')
     $scope.latitude  = this.latitude;
     $scope.longitude = this.longitude;
     console.log('lat:' + $scope.latitude,'lng:' + $scope.longitude);
-  });   
+   });   
 
  
   // ########## Event Controls with socketio #########
