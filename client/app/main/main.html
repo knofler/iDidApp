@@ -142,7 +142,7 @@
                  </div>
                  <div class="map" id="{{view._id}}">
                   <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}" fitToMarkers>
-                  <!-- <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
+               <!--    <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
                       draggable="true" title="Go Giants!">
                   </google-map-marker> -->
                 </google-map>
@@ -152,12 +152,12 @@
                 <div class = "cardFooter">
                   <span ng-click="hideMap(view._id)"><core-icon-button class="room iconbar" icon="room"></core-icon-button></span>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
-                      <template bind if="{{ view.isFav == true }}">
+                  <!--     <template bind if="{{ view.isFav == true }}">
                         <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
                       </template>
-                      <template bind if ="{{ view.isFav == false}}">
-                        <core-icon-button class="star iconbar" on-click="{{makeFav}}" icon="star"></core-icon-button>
-                      </template>
+                      <template bind if="{{ view.isFav == false}}"> -->
+                        <core-icon-button class="star iconbar" on-click="makeFav()" icon="star"></core-icon-button>
+                      <!-- </template> -->
                      <core-icon-button class="reply iconbar" icon="reply"></core-icon-button> 
                      <core-icon-button class="note-add iconbar" icon="note-add" on-click="{{opendialog}}"></core-icon-button>
                 </div>  
