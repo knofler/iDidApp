@@ -58,8 +58,9 @@
                      </div>
                       <div>
                       <paper-input-decorator auto-complete floatingLabel label="write about it .." id="taskDescDeco" error="Value must start with a number!">
-                         <input id="taskDesc" ng-model="formdata.goalDesc" is="core-input" >
+                         <input id="taskDesc" ng-model="formdata.goalDesc" is="core-input">
                          </paper-input-decorator>
+                         <p id="errMsg"></p>
                      </div>
                       <!-- use local ajax -->
                       <div class="buttonAdd">
@@ -70,7 +71,7 @@
                      </div>
                    </form>
                   </div>      
-                <div class = "cardFooter" >
+                <div class = "cardFooterAdd" >
                      <core-icon-button class="room iconbar" icon="room"></core-icon-button>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
                      <core-icon-button class="star iconbar" icon="star"></core-icon-button>
@@ -140,7 +141,7 @@
                    </ul> -->
                  </div>
                  <div class="map" id="{{view._id}}">
-                  <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}}" fitToMarkers>
+                  <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}" fitToMarkers>
                   <!-- <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
                       draggable="true" title="Go Giants!">
                   </google-map-marker> -->

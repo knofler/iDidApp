@@ -59,17 +59,36 @@ angular.module('serveMeApp')
      };
 
   $scope.addGoals    = function (){
-      $http.post('/api/goals', { 
-        goalName: $scope.formdata.goalName,
-        goalDesc: $scope.formdata.goalDesc,
-        isTodo:true,
-        isFav:false,
-        latitude:$scope.latitude,
-        longitude:$scope.longitude,
-        taskProgress: 5,
-        created: new Date()  
-      });
-      $scope.formdata = {}; 
+    if($scope.formdata == undefined){
+      $("#errMsg").text("You haven't put any goal");
+    }
+    else if($scope.formdata.goalName == undefined){
+      $("#errMsg").text("You haven't named your goal !!");
+    }
+    else if($scope.formdata.goalDesc == undefined){
+      $("#errMsg").text("Write something about your goal");
+    }
+    else{
+        var descLength = $scope.formdata.goalDesc.length
+        // console.log(descLength)
+        if(descLength >160){
+          $("#errMsg").text("You have typed "+ (descLength-160) + " more letters");
+        }else{
+            $("#errMsg").hide();
+             $("#errMsg").text();
+              $http.post('/api/goals', { 
+              goalName: $scope.formdata.goalName,
+              goalDesc: $scope.formdata.goalDesc,
+              isTodo:true,
+              isFav:false,
+              latitude:$scope.getLatitude,
+              longitude:$scope.getLongitude,
+              taskProgress: 5,
+              created: new Date()  
+            });
+            $scope.formdata = {}; 
+          }
+      }
      };
   $scope.iDid        = function(goalId){
       $http.put('/api/goals/'+goalId,{
@@ -93,14 +112,14 @@ angular.module('serveMeApp')
       };
 
   // Collect User Geo Location using geo-location element    
-  $scope.latitude  = '';
-  $scope.longitude = '';
+  $scope.getLatitude  = '';
+  $scope.getLongitude = '';
   
   $scope.loc = document.querySelector('geo-location');
   $scope.loc.addEventListener('geo-response', function(e) {
-    $scope.latitude  = this.latitude;
-    $scope.longitude = this.longitude;
-    console.log('lat:' + $scope.latitude,'lng:' + $scope.longitude);
+    $scope.getLatitude  = this.latitude;
+    $scope.getLongitude = this.longitude;
+    console.log('lat:' + $scope.getLatitude,'lng:' + $scope.getLongitude);
    });   
 
  
