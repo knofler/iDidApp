@@ -31,7 +31,13 @@
               <paper-item tabindex="0">Sfogliatelle</paper-item>
           </core-menu>
         </paper-dropdown>
-      </paper-dropdown-menu>
+      
+        <!-- geo-location element applied -->
+          <div class="userLocation">
+              <geo-location watchpos latitude="{{lat}}" longitude="{{longitude}}"></geo-location>
+           </div>
+
+        </paper-dropdown-menu>
               </core-dropdown-menu>
             
              </core-toolbar>
@@ -77,8 +83,8 @@
        <!-- ***************************Each card for task display******************** -->       
         <ul class="holdTaskul" ng-repeat="view in filtered = views | orderBy:'-created'">      
                 <div class = "todoTask" >   
-                    <div class="cardHead" ng-click="iDid(view._id)"> 
-                        <span class="toggleComplete">
+                    <div class="cardHead" > 
+                        <span class="toggleComplete" ng-click="iDid(view._id)">
                
               <bs-switch
                   ng-model="view.isTodo"
@@ -133,6 +139,14 @@
                      </template>
                    </ul> -->
                  </div>
+                 <div class="map">
+                  <google-map latitude="37.77493" longitude="-122.41942" fitToMarkers>
+                  <google-map-marker latitude="37.779" longitude="-122.3892"
+                      draggable="true" title="Go Giants!"></google-map-marker>
+                  <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+                </google-map>
+                 </div>
+               
                 <div class = "cardComment" >        
                 <div class = "cardFooter">
                   <core-icon-button class="room iconbar" icon="room"></core-icon-button>

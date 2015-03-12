@@ -25,7 +25,9 @@
     "firebase": "~2.1.1",
     "firebase-element": "Polymer/firebase-element#~0.5.3",
     "baasic-crud": "~0.1.6",
-    "angular-bootstrap-switch": "~0.3.0"
+    "angular-bootstrap-switch": "~0.3.0",
+    "geo-location": "ebidel/geo-location#master",
+    "google-map": "GoogleWebComponents/google-map#master"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

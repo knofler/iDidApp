@@ -64,6 +64,8 @@ angular.module('serveMeApp')
         goalDesc: $scope.formdata.goalDesc,
         isTodo:true,
         isFav:false,
+        latitude:$scope.latitude,
+        longitude:$scope.longitude,
         taskProgress: 5,
         created: new Date()  
       });
@@ -79,12 +81,25 @@ angular.module('serveMeApp')
          taskProgress: 100  
       })
       }
+    
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
       $location.hash(id);
       $anchorScroll();
       };
 
+  // Collect User Geo Location using geo-location element    
+  $scope.latitude  = '';
+  $scope.longitude = '';
+  
+  $scope.loc = document.querySelector('geo-location');
+  $scope.loc.addEventListener('geo-response', function(e) {
+    $scope.latitude  = this.latitude;
+    $scope.longitude = this.longitude;
+    console.log('lat:' + $scope.latitude,'lng:' + $scope.longitude);
+  });   
+
+ 
   // ########## Event Controls with socketio #########
   $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
