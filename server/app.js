@@ -11,6 +11,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
 
+
+
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
@@ -27,6 +29,34 @@ var socketio = require('socket.io')(server, {
 require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
+
+exports.imageUpload = function(req, res) {
+    var file = req.files.file,
+        path = './public/profile/img/';
+
+    // Logic for handling missing file, wrong mimetype, no buffer, etc.
+
+    var buffer = file.buffer, //Note: buffer only populates if you set inMemory: true.
+        fileName = file.name;
+    var stream = fs.createWriteStream(path + fileName);
+    stream.write(buffer);
+    stream.on('error', function(err) {
+        console.log('Could not write file to memory.');
+        res.status(400).send({
+            message: 'Problem saving the file. Please try again.'
+        });
+    });
+    stream.on('finish', function() {
+        console.log('File saved successfully.');
+        var data = {
+            message: 'File saved successfully.'
+        };
+        res.jsonp(data);
+    });
+    stream.end();
+    console.log('Stream ended.');
+};
+
 
 // Start server
 server.listen(config.port, config.ip, function () {
