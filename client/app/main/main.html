@@ -18,19 +18,14 @@
               <core-icon-button icon="menu" id="core_icon_button" on-tap="{{showDrawer}}" theme="core-light-theme"></core-icon-button>
                 <div id="div" flex></div>
       <paper-dropdown-menu label="What is your Goal" relative="" layout="" inline="" horizontal="" center="" tabindex="0">
-        <paper-dropdown class="dropdown core-transition core-closed" tabindex="-1" >
+       <!--  <paper-dropdown class="dropdown core-transition core-closed" tabindex="-1" >
           <core-menu class="menu">
-              <paper-item tabindex="0">Apple fritter</paper-item>
-              <paper-item tabindex="0">Croissant</paper-item>
-              <paper-item tabindex="0">Donut</paper-item>
-              <paper-item tabindex="0">Financier</paper-item>
-              <paper-item tabindex="0">Jello</paper-item>
-              <paper-item tabindex="0">Madeleine</paper-item>
-              <paper-item tabindex="0">Pound cake</paper-item>
-              <paper-item tabindex="0">Pretzel</paper-item>
-              <paper-item tabindex="0">Sfogliatelle</paper-item>
+              <paper-item tabindex="0">Learn</paper-item>
+              <paper-item tabindex="0">Wonder</paper-item>
+              <paper-item tabindex="0">Make Difference</paper-item>
+              <paper-item tabindex="0">Conquer</paper-item>
           </core-menu>
-        </paper-dropdown>
+        </paper-dropdown> -->
       
         <!-- geo-location element applied -->
           <div class="userLocation">
@@ -109,16 +104,16 @@
               </bs-switch>
 
                         </span>
-                        <span class="taskTitle"><strong>{{view.goalName}}</strong></span>
+                        <span class="taskTitle"><strong>{{view.goalName | capitalize}}</strong></span>
                         <span class="arrowDown">
                           <paper-menu-button>
                             <paper-icon-button icon="expand-more">
                             </paper-icon-button>
                             <paper-dropdown layered class="dropdown" halign="right">
                               <core-menu class="menu">
-                                <paper-item>Settings</paper-item>
-                                <paper-item>Help</paper-item>
-                                <paper-item>Feedback</paper-item>
+                                <span id="removeTask" ng-click="remove(view._id)"><paper-item>Remove</paper-item></span>
+                                <span id="bucketList" ng-click="addToBucketList()"><paper-item>Bucket List</paper-item></span>
+                                <span id ="forLater" ng-click="wishList()"><paper-item>Wish List</paper-item></span>
                               </core-menu>
                             </paper-dropdown>
                           </paper-menu-button>

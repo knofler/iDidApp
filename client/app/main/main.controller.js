@@ -8,10 +8,10 @@ angular.module('serveMeApp')
   $scope.formData       = {};
    // $scope.isSelected = "goals"         
    // $scope.isActive = true;
-   $scope.onText = "todo";
+   $scope.onText = "to do";
    $scope.offText = "iDid";
    $scope.radioOff = true;
-   $scope.label = "goals";
+   $scope.label = "Goals";
    $scope.onColor = "warning";
    $scope.offColor = "success"
     // switch-on-color="{{ onColor }}"
@@ -105,10 +105,15 @@ angular.module('serveMeApp')
     console.log("#"+id)
     $("#"+id).toggle();
    };
-  $scope.showUpload = function(){
+  $scope.showUpload  = function(){
     console.log("Upload clicked");
     $('.fileUpload').hide();
     $('.fileSubmit').show();
+   }; 
+  $scope.remove      = function(id){
+    $http.delete('/api/goals/'+id).success(function(goal){
+      console.log(goal);
+    });
    }; 
 
     

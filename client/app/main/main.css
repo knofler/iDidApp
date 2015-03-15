@@ -227,7 +227,9 @@ google-map {
         margin-bottom: 5px;
       }
       .taskTitle{
-       
+       padding-left: 6px;
+       text-align: center;
+       top: 10px;
       }
       .iconbar{
         color: #ddd;
@@ -347,6 +349,12 @@ google-map {
       }
       .holdTaskul{
         margin-left: -41px;
+      }
+
+      paper-item:hover{
+        cursor: pointer;
+        background-color: orange;
+        padding:3px;
       }
       
     
