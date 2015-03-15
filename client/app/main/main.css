@@ -1,3 +1,44 @@
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  /*margin-top: -10px;*/
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: -5px;
+  left: 7px;
+  /* right: 30px; */
+  margin: 0;
+  padding: 0;
+  font-size: 0px;
+  cursor: pointer;
+   opacity: 0; 
+  border: 1px solid red;
+  width: 30px;
+  height: 29px;
+}
+
+.fileSubmit{
+  display: none;
+}
+
+#uploadForm{
+  display: inline;
+  width: 0px;
+}
+
+.uploadSubmit{
+  position: relative;
+  font-size: 9px;
+  line-height: 0;
+  top: -20px;
+  right: 0;
+  left: -7px;
+  margin: 0;
+  padding: 0;
+   opacity: 0; 
+}
+
 google-map {
     height: 200px;
   }
@@ -226,6 +267,22 @@ google-map {
       }
       .star:hover{
         color:orange;
+      }
+      .star{
+        /*border: 1px solid blue;*/
+      }
+      .attachment{
+        /*border: 1px solid blue;*/
+      }
+      .cloud-upload{
+        /*border: 1px solid blue;*/
+        width: 40px;
+        padding: 5px;
+        height: 40px;
+      }
+      .attachment:hover{
+        color:blue;
+        cursor: pointer;
       }
       .reply:hover{
         color:lightblue;

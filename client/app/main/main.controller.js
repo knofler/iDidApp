@@ -44,7 +44,8 @@ angular.module('serveMeApp')
             $scope.ididViews = dids;
             socket.syncUpdates('goal', $scope.ididViews);
      });
-   
+
+
 
   // Functions interating with api calls and rendering pages
   $scope.addThing    = function() {
@@ -104,6 +105,12 @@ angular.module('serveMeApp')
     console.log("#"+id)
     $("#"+id).toggle();
    };
+  $scope.showUpload = function(){
+    console.log("Upload clicked");
+    $('.fileUpload').hide();
+    $('.fileSubmit').show();
+   }; 
+
     
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {

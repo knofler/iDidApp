@@ -147,26 +147,36 @@
                   </google-map-marker> -->
                 </google-map>
                  </div>
-                 <div class="uploadFile">
-                   <form id        =  "uploadForm"
-                       enctype   =  "multipart/form-data"
-                       action    =  "/api/uploads"
-                       method    =  "post">
-                  <input type="file" name="userPhoto" />
-                  <input type="submit" value="Upload Image" name="submit">
-                  </form>
-                 </div>
                
                 <div class = "cardComment" >        
                 <div class = "cardFooter">
+
                   <span ng-click="hideMap(view._id)"><core-icon-button class="room iconbar" icon="room"></core-icon-button></span>
                      <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
                   <!--     <template bind if="{{ view.isFav == true }}">
                         <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
                       </template>
                       <template bind if="{{ view.isFav == false}}"> -->
-                        <core-icon-button class="star iconbar" on-click="makeFav()" icon="star"></core-icon-button>
+                      <core-icon-button class="star iconbar" on-click="makeFav()" icon="star"></core-icon-button>
                       <!-- </template> -->
+                      <span>
+                      <form   id =  "uploadForm"
+                       enctype   =  "multipart/form-data"
+                       action    =  "/api/uploads"
+                       method    =  "post">
+                      <span class="fileUpload" ng-click="showUpload()">
+                      <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
+                        <input type="file" name="userPhoto" class="upload" />
+                      </core-icon-button>
+                          
+                      </span>
+                      <span class="fileSubmit">
+                        <core-icon-button class="cloud-upload iconbar" id="uploadBtn" icon="cloud-upload">
+                          <input type="submit" class="uploadSubmit" name="submit">
+                        </core-icon-button>
+                        
+                      </span>  
+                    </form>
                      <core-icon-button class="reply iconbar" icon="reply"></core-icon-button> 
                      <core-icon-button class="note-add iconbar" icon="note-add" on-click="{{opendialog}}"></core-icon-button>
                 </div>  
