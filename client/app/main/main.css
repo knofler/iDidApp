@@ -1,3 +1,12 @@
+html /deep/ paper-dialog {
+    color: green;
+}
+
+html /deep/ paper-dialog::shadow #scroller {
+    height: 450px;
+    width: 300px;
+}
+
 .fileUpload {
   position: relative;
   overflow: hidden;

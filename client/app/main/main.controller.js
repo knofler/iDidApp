@@ -6,6 +6,7 @@ angular.module('serveMeApp')
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
   $scope.formData       = {};
+  $scope.myData = "test data";
    // $scope.isSelected = "goals"         
    // $scope.isActive = true;
    $scope.onText = "to do";
@@ -48,14 +49,14 @@ angular.module('serveMeApp')
 
 
   // Functions interating with api calls and rendering pages
-  $scope.addThing    = function() {
+  $scope.addThing    = function () {
       if($scope.newThing === '') {
         return;
       }
       $http.post('/api/things', { name: $scope.newThing });
       $scope.newThing = '';
       };
-  $scope.deleteThing = function(thing) {
+  $scope.deleteThing = function (thing) {
       $http.delete('/api/things/' + thing._id);
      };
 
@@ -91,7 +92,7 @@ angular.module('serveMeApp')
           }
       }
      };
-  $scope.iDid        = function(goalId){
+  $scope.iDid        = function (goalId){
       $http.put('/api/goals/'+goalId,{
          isTodo:false,
          isFav:false,
@@ -101,33 +102,39 @@ angular.module('serveMeApp')
          taskProgress: 100  
       })
       }
-  $scope.hideMap     = function(id){
+  $scope.hideMap     = function (id){
     console.log("#"+id)
     $("#"+id).toggle();
    };
-  $scope.showUpload  = function(){
+  $scope.showUpload  = function (){
     console.log("Upload clicked");
     $('.fileUpload').hide();
     $('.fileSubmit').show();
    }; 
-  $scope.remove      = function(id){
+  $scope.remove      = function (id){
     $http.delete('/api/goals/'+id).success(function(goal){
       console.log(goal);
     });
    }; 
 
   //send email using nodemailer
-  $scope.sendMail    = function(to,from,subject,text){
-     $http.post("/api/emails/", {
-      to:to,
-      from:from,
-      subject:subject,
-      text:text
-    }).success(function(email){
+  $scope.sendMail    = function (to,from,subject,text){
+    $http.post("/api/emails/", {
+        to:to,
+        from:from,
+        subject:subject,
+        text:text
+      }).success(function(email){
         console.log(email)
      });  
-   };
-    
+    };
+  
+  $scope.mailModal   = function(to,from,subject,text){
+    document.getElementById('emailModal').toggle();
+     // $scope.sendMail(to,from,subject,text);
+   }; 
+
+
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
       $location.hash(id);
