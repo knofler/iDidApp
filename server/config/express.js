@@ -4,21 +4,31 @@
 
 'use strict';
 
-var express = require('express');
-var favicon = require('serve-favicon');
-var morgan = require('morgan');
-var compression = require('compression');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var cookieParser = require('cookie-parser');
-var errorHandler = require('errorhandler');
-var path = require('path');
-var config = require('./environment');
-var passport = require('passport');
-var session = require('express-session');
-var mongoStore = require('connect-mongo')(session);
-var mongoose = require('mongoose');
-var multer  = require('multer');
+var express         = require('express');
+var favicon         = require('serve-favicon');
+var morgan          = require('morgan');
+var compression     = require('compression');
+var bodyParser      = require('body-parser');
+var methodOverride  = require('method-override');
+var cookieParser    = require('cookie-parser');
+var errorHandler    = require('errorhandler');
+var path            = require('path');
+var config          = require('./environment');
+var passport        = require('passport');
+var session         = require('express-session');
+var mongoStore      = require('connect-mongo')(session);
+var mongoose        = require('mongoose');
+var multer          = require('multer');
+var nodemailer      = require('nodemailer');
+
+// create reusable transporter object using SMTP transport
+var smtpTransport = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'nodemailer.me@gmail.com',
+        pass: 'tst_node123'
+    }
+});
 
 
 module.exports = function(app) {
@@ -54,6 +64,28 @@ module.exports = function(app) {
     }
   }));
 
+  // //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
+  app.post('/api/emails/',function(req,res){
+    console.log("req received from email service is : ", req.body.to);
+    var toMail = req.body.to;
+    var fromMail = req.body.from;
+    var subjectMail = req.body.subject;
+    var textMail = req.body.text;
+    console.log(" tomail is : ",toMail, " fromMail is : ", fromMail , " subject Mail is ", subjectMail , " bodyMail is : ", textMail);
+    // Your NodeMailer logic comes here
+      smtpTransport.sendMail({
+         from: fromMail, // sender address
+         to: toMail, // comma separated list of receivers
+         subject: subjectMail, // Subject line
+         text: textMail // plaintext body
+      }, function(error, response){
+         if(error){
+             console.log(error);
+         }else{
+             console.log("Message sent: " + response.message);
+         }
+      });
+  });
 
   // Persist sessions with mongoStore
   // We need to enable sessions for passport twitter because its an oauth 1.0 strategy

@@ -116,6 +116,17 @@ angular.module('serveMeApp')
     });
    }; 
 
+  //send email using nodemailer
+  $scope.sendMail    = function(to,from,subject,text){
+     $http.post("/api/emails/", {
+      to:to,
+      from:from,
+      subject:subject,
+      text:text
+    }).success(function(email){
+        console.log(email)
+     });  
+   };
     
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
