@@ -5,7 +5,7 @@ angular.module('serveMeApp')
     
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
-  $scope.formData       = {};
+  $scope.formdata       = {};
   $scope.myData = "test data";
    // $scope.isSelected = "goals"         
    // $scope.isActive = true;
@@ -118,19 +118,29 @@ angular.module('serveMeApp')
    }; 
 
   //send email using nodemailer
-  $scope.sendMail    = function (to,from,subject,text){
-    $http.post("/api/emails/", {
-        to:to,
-        from:from,
-        subject:subject,
-        text:text
+  $scope.sendMail    = function (){
+   
+    setTimeout(function(){
+       $http.post("/api/emails/", {
+        to:$scope.formdata.mailTo,
+        from:"nodemailer.me@gmail.com",
+        subject:$scope.formdata.mailSubject,
+        text:$scope.formdata.mailText
       }).success(function(email){
         console.log(email)
-     });  
+     }); 
+        // console.log($scope.formdata.mailTo,"nodemailer.me@gmail.com",$scope.formdata.mailSubject,$scope.formdata.mailText)
+    // alert("I have been clicked"); 
+
+    },200);
     };
+   
   
   $scope.mailModal   = function(to,from,subject,text){
+    $scope.formdata = {};
     document.getElementById('emailModal').toggle();
+     
+
      // $scope.sendMail(to,from,subject,text);
    }; 
 

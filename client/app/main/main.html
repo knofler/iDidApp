@@ -1,33 +1,33 @@
 <!-- Paper dialog will be displayed on click -->
-<paper-dialog transition="core-transition-center" id="emailModal" backdrop closeSelector resizerIsPeer=true>
+<paper-dialog transition="core-transition-center" id="emailModal" backdrop closeSelector="[affirmative]" resizerIsPeer=false>
    <!-- <input type="text" ng-model="myData" /> -->
        <!-- *************************add task top card*************************** -->
         <div class = "todoTask" >   
-          <div class="cardHead">Compose: 
-          <hr>
+          <div class="emailCardHead">Compose: 
           </div>    
           <div class = "cardBody">
             <form horizontal layout >
-              <div class="inputGoal">
               <div>
-                <paper-input-decorator label="To: " id="taskNameDeco" error="Value must start with a number!">
+              <div>
+                <paper-input-decorator label="To: " class="inputEmail" id="mailTo" error="Value must start with a number!">
                    <input id="taskName" ng-model="formdata.mailTo" is="core-input">
                    </paper-input-decorator>
                </div>
-                <div>
-                <paper-input-decorator label="Subject:" id="taskDescDeco" error="Value must start with a number!">
+              <div class="inputEmail">
+                <paper-input-decorator label="Subject:" class="inputEmail" id="mailSubject" error="Value must start with a number!">
                    <input id="taskDesc" ng-model="formdata.mailSubject" is="core-input">
                    </paper-input-decorator>
                    <p id="errMsg"></p>
                </div>
               <div>
                 <paper-autogrow-textarea label=" " id="a1">
-                  <textarea id="t1" ng-model="formdata.mailText"></textarea>
+                  <textarea class="textAreaClass" id="t1" ng-model="formdata.mailText" placeholder="write short email"></textarea>
                 </paper-autogrow-textarea>
                </div>
                 <!-- use local ajax -->
                 <div class="buttonAdd">
-                <paper-button raised ng-click="addGoals()">Send</paper-button>
+                <paper-button raised affirmative class="emailBtn" ng-click="sendMail()">Send</paper-button>
+                <paper-button raised dismissive class="emailDraftBtn" ng-click="saveMail()">Draft</paper-button>
                 <!-- use firebase connection -->
                  <!-- <button on-click="{{addGoal}}">Add Goal</button> -->
                 </div>
