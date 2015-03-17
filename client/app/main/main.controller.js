@@ -134,13 +134,9 @@ angular.module('serveMeApp')
 
     },200);
     };
-   
-  
-  $scope.mailModal   = function(to,from,subject,text){
+  $scope.mailModal   = function(){
     $scope.formdata = {};
     document.getElementById('emailModal').toggle();
-     
-
      // $scope.sendMail(to,from,subject,text);
    }; 
 
