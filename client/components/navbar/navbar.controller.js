@@ -11,6 +11,7 @@ angular.module('serveMeApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    
 
     $scope.logout = function() {
       Auth.logout();
