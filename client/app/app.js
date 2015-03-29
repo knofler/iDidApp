@@ -27,7 +27,7 @@ angular.module('serveMeApp', [
   .filter('splitArr', function() {
         return function(input, splitChar) {
           var strToArr = input.split(splitChar);
-          console.log(strToArr.length)
+          // console.log(strToArr.length)
             // do some bounds checking here to ensure it has that index
             return strToArr.length;
         }
@@ -43,7 +43,7 @@ angular.module('serveMeApp', [
   .filter('split', function() {
         return function(input, splitChar, splitIndex) {
           var strToArr = input.split(splitChar);
-          console.log(strToArr.length)
+          // console.log(strToArr.length)
             // do some bounds checking here to ensure it has that index
             return input.split(splitChar)[splitIndex];
         }
