@@ -102,6 +102,11 @@ angular.module('serveMeApp')
          taskProgress: 100  
       })
       }
+  $scope.makeFav     = function (goalId){
+     $http.put('/api/goals/'+goalId,{
+         isFav:true
+      })
+   };    
   $scope.hideMap     = function (id){
     console.log("#"+id)
     $("#"+id).toggle();

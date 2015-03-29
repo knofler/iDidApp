@@ -325,6 +325,9 @@ google-map {
       .star:hover{
         color:orange;
       }
+      .starFav{
+       color:orange;   
+      }
       .star{
         /*border: 1px solid blue;*/
       }
