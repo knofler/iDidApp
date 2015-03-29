@@ -1,5 +1,5 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<!-- Paper dialog will be displayed on click -->
+<!-- Paper dialog of email compose will be displayed on click -->
 <paper-dialog transition="core-transition-center" id="emailModal" backdrop closeSelector="[affirmative]" resizerIsPeer=false>
    <!-- <input type="text" ng-model="myData" /> -->
        <!-- *************************add task top card*************************** -->
@@ -39,6 +39,7 @@
              </div>   
         </div>
 </paper-dialog>
+
 
 <!-- Directive called here   -->
 <main-modal></main-modal>
@@ -182,6 +183,22 @@
                         </google-map-marker> -->
                   </google-map>
               </div>
+              <div class="inputTask">
+                <div>
+                  <paper-input-decorator auto-complete floatingLabel label="Add tasks " id="taskNameDeco">
+                     <input id="taskName" ng-model="taskformdata.task" is="core-input">
+                  </paper-input-decorator>
+                  <button ng-click="addTaskItem(view._id)">add task</button>
+                 </div>
+              </div>   
+              <div class="list-group taskListDiv">
+                  <a href="#" class="list-group-item active">
+                    Things to do -> {{view.taskItem}} {{ view.taskItem | splitArr:','}}
+                  </a>
+                  <ul ng-repeat="i in [] | range: 6">
+                    <li class="eachTask"><a href="#" class="list-group-item">{{view.taskItem | split:',':i}}</a></li>
+                  </ul>
+                </div>
                  
               <div class = "cardComment" >        
               <div class = "cardFooter">
@@ -218,7 +235,9 @@
                           </form>
                          
                          <core-icon-button class="reply iconbar" icon="reply"></core-icon-button> 
-                         <core-icon-button class="note-add iconbar" icon="note-add" on-click="{{opendialog}}"></core-icon-button>
+                        <span ng-click="addTaskItem(view._id)">
+                         <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
+                        </span>
                          <span ng-click="mailModal()">
                          <core-icon-button class="note-add iconbar" icon="mail"></core-icon-button>
                   </span>

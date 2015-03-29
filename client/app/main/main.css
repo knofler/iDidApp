@@ -167,8 +167,17 @@ google-map {
        /*border-radius: 9px/40px;*/
        margin-bottom: 13px;
        margin-top:13px;
-       max-height: 530px;
+       /*max-height: 530px;*/
        /*width: 50%*/
+      }
+      .taskListDiv{
+        margin-top: 10px;
+      }
+      .eachTask{
+        /*padding: 5px;*/
+        margin-left: -40px;
+        list-style: none;
+        /*background-color: red;*/
       }
       #core_drawer_panel {
         position: absolute;

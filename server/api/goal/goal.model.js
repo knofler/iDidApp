@@ -8,6 +8,7 @@ var GoalSchema = new Schema({
   isTodo: Boolean,
   goalName: String,
   goalDesc: String,
+  taskItem:String,
   latitude:String,
   longitude:String,
   userLocation: String,

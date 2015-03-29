@@ -24,6 +24,30 @@ angular.module('serveMeApp', [
       return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
     }
   })
+  .filter('splitArr', function() {
+        return function(input, splitChar) {
+          var strToArr = input.split(splitChar);
+          console.log(strToArr.length)
+            // do some bounds checking here to ensure it has that index
+            return strToArr.length;
+        }
+    })
+  .filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  };
+  })
+  .filter('split', function() {
+        return function(input, splitChar, splitIndex) {
+          var strToArr = input.split(splitChar);
+          console.log(strToArr.length)
+            // do some bounds checking here to ensure it has that index
+            return input.split(splitChar)[splitIndex];
+        }
+    })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers

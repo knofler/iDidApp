@@ -5,16 +5,17 @@ angular.module('serveMeApp')
     
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
-  $scope.formdata       = {};
-  $scope.myData = "test data";
+  $scope.formdata      = {};
+  $scope.taskformdata  = {};
+  $scope.myData        = "test data";
    // $scope.isSelected = "goals"         
    // $scope.isActive = true;
-   $scope.onText = "to do";
-   $scope.offText = "iDid";
-   $scope.radioOff = true;
-   $scope.label = "Goals";
-   $scope.onColor = "warning";
-   $scope.offColor = "success"
+   $scope.onText       = "to do";
+   $scope.offText      = "iDid";
+   $scope.radioOff     = true;
+   $scope.label        = "Goals";
+   $scope.onColor      = "warning";
+   $scope.offColor     = "success"
     // switch-on-color="{{ onColor }}"
     // switch-off-color="{{ offColor }}"
     // switch-animate="{{ animate }}"
@@ -103,9 +104,9 @@ angular.module('serveMeApp')
       })
       }
   $scope.makeFav     = function (goalId){
-     $http.put('/api/goals/'+goalId,{
-         isFav:true
-      })
+   $http.put('/api/goals/'+goalId,{
+       isFav:true
+    })
    };    
   $scope.hideMap     = function (id){
     console.log("#"+id)
@@ -144,6 +145,36 @@ angular.module('serveMeApp')
     document.getElementById('emailModal').toggle();
      // $scope.sendMail(to,from,subject,text);
    }; 
+  
+  // $scope.taskModal   = function(){
+  //   $scope.taskformdata = {};
+  //   document.getElementById('taskModal').toggle();
+  //    // $scope.sendMail(to,from,subject,text);
+  //  }; 
+  $scope.addTaskItem  = function (goalId){   
+    var dataComing = $scope.taskformdata.task;
+    $http.get('/api/goals/'+goalId).success(function(data){
+      if (data.taskItem !== undefined){
+        var taskItem = [];
+        taskItem.push(data.taskItem)
+        // console.log("data from form is : ",dataComing)
+        // console.log("Current task : ", taskItem)
+        taskItem.push(dataComing)
+        // console.log("new task " , taskItem);
+           $http.put('/api/goals/'+goalId,{
+             taskItem:taskItem
+            })
+      }else{
+        // console.log("I dont have past data")
+         $http.put('/api/goals/'+goalId,{
+             taskItem:dataComing
+            })
+      }
+    });
+   
+    $scope.taskformdata = {}
+    };
+
 
 
   // scroll to feature included for SPA App
