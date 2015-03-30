@@ -153,27 +153,24 @@ angular.module('serveMeApp')
   //  }; 
   $scope.addTaskItem  = function (goalId){   
     var dataComing = $scope.taskformdata.task;
-    $http.get('/api/goals/'+goalId).success(function(data){
-      if (data.taskItem !== undefined){
-        var taskItem = [];
-        taskItem.push(data.taskItem)
-        // console.log("data from form is : ",dataComing)
-        // console.log("Current task : ", taskItem)
-        taskItem.push(dataComing)
-        // console.log("new task " , taskItem);
-           $http.put('/api/goals/'+goalId,{
-             taskItem:taskItem
-            })
-      }else{
-        // console.log("I dont have past data")
-         $http.put('/api/goals/'+goalId,{
-             taskItem:dataComing
-            })
-      }
-    });
-   
+    $http.post('/api/tasks/',{
+        goal_id : goalId,
+        task : dataComing,
+        created_at : new Date()
+      })
     $scope.taskformdata = {}
     };
+
+  $scope.showTask = function(goalId){
+    $http.get('/api/tasks/goals/'+goalId).success(function(data){
+        console.log("task for this id is :", data);
+        $scope.taskdata = data;
+        socket.syncUpdates('task', $scope.taskdata);
+    })
+    var id = "taskListDiv-"+goalId
+    console.log("id made is :", id)
+    $("#"+id).toggle()
+   };  
 
 
 

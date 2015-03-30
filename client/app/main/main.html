@@ -183,23 +183,22 @@
                         </google-map-marker> -->
                   </google-map>
               </div>
-              <div class="inputTask">
-                <div>
-                  <paper-input-decorator auto-complete floatingLabel label="Add tasks " id="taskNameDeco">
-                     <input id="taskName" ng-model="taskformdata.task" is="core-input">
-                  </paper-input-decorator>
-                  <button ng-click="addTaskItem(view._id)">add task</button>
+              <div class="taskListClass" id="taskListDiv-{{view._id}}">
+                  <div>
+                    <paper-input-decorator auto-complete floatingLabel label="Add tasks " id="taskNameDeco">
+                       <input id="taskName" ng-model="taskformdata.task" is="core-input">
+                    </paper-input-decorator>
+                    <button ng-click="addTaskItem(view._id)">add task</button>
+                   </div>
+                  <div class="list-group ">
+                      <a href="#" class="list-group-item active">
+                        Things to do ->
+                      </a>
+                      <ul ng-repeat="task in taskdata track by $index">
+                        <li class="eachTask"><a href="#" class="list-group-item">{{task.task}}</a></li>
+                      </ul>
+                    </div>
                  </div>
-              </div>   
-              <div class="list-group taskListDiv">
-                  <a href="#" class="list-group-item active">
-                    Things to do -> {{view.taskItem}} {{ view.taskItem | splitArr:','}}
-                  </a>
-                  <ul ng-repeat="i in [] | range: 6">
-                    <li class="eachTask"><a href="#" class="list-group-item">{{view.taskItem | split:',':i}}</a></li>
-                  </ul>
-                </div>
-                 
               <div class = "cardComment" >        
               <div class = "cardFooter">
                   <span>
@@ -235,7 +234,7 @@
                           </form>
                          
                          <core-icon-button class="reply iconbar" icon="reply"></core-icon-button> 
-                        <span ng-click="addTaskItem(view._id)">
+                        <span ng-click="showTask(view._id)">
                          <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                         </span>
                          <span ng-click="mailModal()">

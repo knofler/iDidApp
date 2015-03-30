@@ -96,7 +96,9 @@ html /deep/ paper-autogrow-textarea textarea{
 google-map {
     height: 200px;
   }
-
+.map{
+  /*display: none;*/
+}
 .thing-form {
     margin: 20px 0;
 }
@@ -364,7 +366,9 @@ google-map {
         margin-top:-9px; 
       }
 
-  
+      .taskListClass{
+        display: none;
+      }
 
       .cardDesc{
         padding-left: 10px;

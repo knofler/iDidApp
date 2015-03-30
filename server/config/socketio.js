@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/task/task.socket').register(socket);
   require('../api/email/email.socket').register(socket);
   require('../api/upload/upload.socket').register(socket);
   require('../api/goal/goal.socket').register(socket);
