@@ -175,6 +175,9 @@ google-map {
       .taskListDiv{
         margin-top: 10px;
       }
+      .disTaskGrp{
+        margin-top: 10px;
+      }
       .eachTask{
         /*padding: 5px;*/
         margin-left: -40px;
@@ -197,6 +200,12 @@ google-map {
         box-sizing: border-box;
         background-color: rgb(221, 221, 221);
       }
+      #section2 {
+        /*height: 100%;*/
+        /*box-sizing: border-box;*/
+        background-color: red;
+      }
+   
       #sectionInput {
         height: 75px;
         box-sizing: border-box;

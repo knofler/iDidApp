@@ -153,15 +153,19 @@ angular.module('serveMeApp')
   //  }; 
   $scope.addTaskItem  = function (goalId){   
     var dataComing = $scope.taskformdata.task;
-    $http.post('/api/tasks/',{
-        goal_id : goalId,
-        task : dataComing,
-        created_at : new Date()
-      })
+    // console.log("dataComing is :",dataComing)
+    if(dataComing !==undefined){
+      $http.post('/api/tasks/',{
+          goal_id : goalId,
+          task : dataComing,
+          created_at : new Date()
+        })
+      }
     $scope.taskformdata = {}
     };
 
   $scope.showTask = function(goalId){
+    $scope.taskdata = '';
     $http.get('/api/tasks/goals/'+goalId).success(function(data){
         console.log("task for this id is :", data);
         $scope.taskdata = data;
@@ -169,6 +173,7 @@ angular.module('serveMeApp')
     })
     var id = "taskListDiv-"+goalId
     console.log("id made is :", id)
+    $('.taskListClass').hide()
     $("#"+id).toggle()
    };  
 
