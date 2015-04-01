@@ -16,6 +16,8 @@ angular.module('serveMeApp')
    $scope.label        = "Goals";
    $scope.onColor      = "warning";
    $scope.offColor     = "success"
+
+
     // switch-on-color="{{ onColor }}"
     // switch-off-color="{{ offColor }}"
     // switch-animate="{{ animate }}"
@@ -151,7 +153,7 @@ angular.module('serveMeApp')
   //   document.getElementById('taskModal').toggle();
   //    // $scope.sendMail(to,from,subject,text);
   //  }; 
-  $scope.addTaskItem  = function (goalId){   
+  $scope.addTaskItem = function (goalId){   
     var dataComing = $scope.taskformdata.task;
     // console.log("dataComing is :",dataComing)
     if(dataComing !==undefined){
@@ -163,8 +165,7 @@ angular.module('serveMeApp')
       }
     $scope.taskformdata = {}
     };
-
-  $scope.showTask = function(goalId){
+  $scope.showTask    = function(goalId){
     $scope.taskdata = '';
     $http.get('/api/tasks/goals/'+goalId).success(function(data){
         console.log("task for this id is :", data);
@@ -176,8 +177,19 @@ angular.module('serveMeApp')
     $('.taskListClass').hide()
     $("#"+id).toggle()
    };  
-
-
+  $scope.handleImage = function (e){
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img,0,0);
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+   };
 
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
