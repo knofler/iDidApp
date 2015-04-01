@@ -196,43 +196,42 @@
                  </div>
               <div class = "cardComment" >        
               <div class = "cardFooter" >
-                          <span ng-click="hideMap(view._id)">
-                              <core-icon-button class="room iconbar" icon="room">
-                              </core-icon-button>
-                          </span>
-                          <core-icon-button class="phone iconbar" icon="perm-phone-msg"></core-icon-button>
-                            <!--<template bind if="{{ view.isFav == true }}">
-                              <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
-                            </template>
-                            <template bind if="{{ view.isFav == false}}"> -->
-                          <span ng-click="makeFav(view._id)" >
-                              <core-icon-button class="star iconbar" icon="star" ng-class="{starFav:view.isFav}">
-                              </core-icon-button>
-                          </span>
-                          <!-- </template> -->
+                <span ng-click = "hideMap(view._id)">
+                  <core-icon-button class="room iconbar" icon="room">
+                  </core-icon-button>
+                 </span>
+                <core-icon-button class = "phone iconbar" icon="perm-phone-msg"></core-icon-button>
+                  <!--<template bind if="{{ view.isFav == true }}">
+                    <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
+                  </template>
+                  <template bind if="{{ view.isFav == false}}"> -->
+                <span ng-click = "makeFav(view._id)" >
+                  <core-icon-button class="star iconbar" icon="star" ng-class="{starFav:view.isFav}">
+                  </core-icon-button>
+                 </span>
+                <!-- </template> -->
 
-                          <form id ="uploadForm" enctype ="multipart/form-data" action ="/api/uploads" method ="post">
-                              <span class="fileUpload" ng-click="showUpload()">
-                                  <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
-                                    <input type="file" name="userPhoto" class="upload" />
-                                  </core-icon-button>
-                              </span>
-
-                              <span class="fileSubmit">
-                                  <core-icon-button class="cloud-upload iconbar" id="uploadBtn" icon="cloud-upload">
-                                    <input type="submit" class="uploadSubmit" name="submit">
-                                  </core-icon-button>
-                              </span>
-                           </form>
-                         
-                          <core-icon-button class="reply iconbar" icon="reply"></core-icon-button> 
-                          <span ng-click="showTask(view._id)">
-                              <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
-                          </span>
-                          <span ng-click="mailModal()">
-                             <core-icon-button class="note-add iconbar" icon="mail"></core-icon-button>
-                          </span>
-              </div>  
+                <form id ="uploadForm" enctype ="multipart/form-data" action ="/api/uploads" method ="post">
+                    <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)">
+                      <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
+                        <input type="file" name="userPhoto" class="upload" />
+                      </core-icon-button>
+                     </span>
+                    <span class = "fileSubmit" id="fileSubmit-{{view._id}}>
+                      <core-icon-button class="cloud-upload iconbar" id="uploadBtn" icon="cloud-upload">
+                        <input type="submit" class="uploadSubmit" name="submit">
+                      </core-icon-button>
+                     </span>
+                 </form>
+               
+                <core-icon-button class = "reply iconbar" icon="reply"></core-icon-button> 
+                <span ng-click = "showTask(view._id)">
+                  <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
+                 </span>
+                <span ng-click = "mailModal()">
+                  <core-icon-button class="note-add iconbar" icon="mail"></core-icon-button>
+                 </span>
+               </div>  
          </ul>    
         <!-- *************************** ## End of cards ## ******************** -->  
        </div>  

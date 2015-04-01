@@ -114,10 +114,11 @@ angular.module('serveMeApp')
     console.log("#"+id)
     $("#"+id).toggle();
    };
-  $scope.showUpload  = function (){
-    console.log("Upload clicked");
-    $('.fileUpload').hide();
-    $('.fileSubmit').show();
+  $scope.showUpload  = function (goalId){
+    console.log("Upload clicked: ",'#fileUpload-'+goalId);
+    $('#fileUpload-'+goalId).hide();
+    $('#fileSubmit-'+goalId).show();
+    // $('.fileSubmit').show();
    }; 
   $scope.remove      = function (id){
     $http.delete('/api/goals/'+id).success(function(goal){
