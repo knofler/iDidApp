@@ -203,7 +203,8 @@ google-map {
       #section2 {
         /*height: 100%;*/
         /*box-sizing: border-box;*/
-        background-color: red;
+        /*min-height: 100%;*/
+        /*background-color: red;*/
       }
    
       #sectionInput {
@@ -221,12 +222,13 @@ google-map {
       }
       #core_header_panel {
         width: 100%;
-        height: 700px;
+        min-height:100% ;
         left: -6px;
         top: -10px;
         position: absolute;
       }
       #core_toolbar {
+        margin-top: 50px;
         color: rgb(241, 241, 241);
         fill: rgb(241, 241, 241);
         background-color: rgb(66, 133, 244);
@@ -235,10 +237,6 @@ google-map {
       #div1{
         padding-top: 25px;
         margin-left: 400px;
-      }
-      #section2 {
-        height: 5000px;
-        background: linear-gradient(rgb(214, 227, 231), rgb(173, 216, 230));
       }
       #core_icon_button3 {
         left: 18px;
