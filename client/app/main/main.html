@@ -77,7 +77,7 @@
                    <input id="taskName" ng-model="goalformdata.goalName" is="core-input">
                    </paper-input-decorator>
                </div>
-                <div>
+                <div> 
                 <paper-input-decorator auto-complete floatingLabel label="Write about it .." id="taskDescDeco" error="Value must start with a number!">
                    <input id="taskDesc" ng-model="goalformdata.goalDesc" is="core-input">
                    </paper-input-decorator>
@@ -165,18 +165,25 @@
                </div>
               <div class = "taskListClass" id="taskListDiv-{{view._id}}">
                   <div>
-                    <paper-input-decorator auto-complete floatingLabel label="Add tasks " id="taskNameDeco">
+                    <paper-input-decorator auto-complete floatingLabel label="Goal specific tasks .. " id="taskNameDeco">
                        <input id="taskName" ng-model="taskformdata.task" is="core-input" required>
                     </paper-input-decorator>
                     <!-- <button ng-click="addTaskItem(view._id)">add task</button> -->
-                    <paper-button raised recenteringTouch='true' fill='true'  ng-click="addTaskItem(view._id)">Add task</paper-button>
+                    <paper-button raised class="addTaskBtn" recenteringTouch='true' fill='true'  ng-click="addTaskItem(view._id)">Add task</paper-button>
                    </div>
                   <div class="list-group disTaskGrp">
                       <a href="#" class="list-group-item active">
                         Things to do ::
                       </a>
                       <ul ng-repeat="task in taskdata track by $index">
-                        <li class="eachTask"><a href="#" class="list-group-item">{{task.task}}</a></li>
+                        <div class="funkyradio">
+                          <div class="funkyradio-warning">
+                              <input type="checkbox" name="checkbox" id="checkbox1" checked/>
+                              <label for="checkbox1">{{task.task}}
+                                <!-- <a href="#" class="list-group-item"></a> -->
+                              </label>
+                          </div>
+                        </div>
                       </ul>
                       </div>
                  </div>
