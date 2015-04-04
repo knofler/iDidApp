@@ -64,26 +64,31 @@ angular.module('serveMeApp')
      };
 
   $scope.addGoals    = function (){
-    if($scope.formdata == undefined){
-      $("#errMsg").text("You haven't put any goal");
+    // console.log($scope.goalformdata)
+    if($scope.goalformdata == undefined){
+      $("#errMsgs").text("You haven't put any goal");
+      // console.log("You haven't put any goal");
     }
-    else if($scope.formdata.goalName == undefined){
-      $("#errMsg").text("You haven't named your goal !!");
+    else if($scope.goalformdata.goalName == undefined){
+      $("#errMsgs").text("You haven't named your goal !!");
+      // console.log("You haven't named your goal !!");
     }
-    else if($scope.formdata.goalDesc == undefined){
-      $("#errMsg").text("Write something about your goal");
+    else if($scope.goalformdata.goalDesc == undefined){
+      $("#errMsgs").text("Write something about your goal");
+      // console.log("Write something about your goal")
     }
     else{
-        var descLength = $scope.formdata.goalDesc.length
+        var descLength = $scope.goalformdata.goalDesc.length
         // console.log(descLength)
         if(descLength >160){
-          $("#errMsg").text("You have typed "+ (descLength-160) + " more letters");
+          $("#errMsgs").text("You have typed "+ (descLength-160) + " more letters");
+          // console.log("You have typed "+ (descLength-160) + " more letters")
         }else{
-            $("#errMsg").hide();
-             $("#errMsg").text();
+            $("#errMsgs").hide();
+             $("#errMsgs").text();
               $http.post('/api/goals', { 
-              goalName: $scope.formdata.goalName,
-              goalDesc: $scope.formdata.goalDesc,
+              goalName: $scope.goalformdata.goalName,
+              goalDesc: $scope.goalformdata.goalDesc,
               isTodo:true,
               isFav:false,
               latitude:$scope.getLatitude,
@@ -91,7 +96,7 @@ angular.module('serveMeApp')
               taskProgress: 5,
               created: new Date()  
             });
-            $scope.formdata = {}; 
+            $scope.goalformdata = {}; 
           }
       }
      };

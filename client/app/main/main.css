@@ -102,7 +102,7 @@ google-map {
 .thing-form {
     margin: 20px 0;
 }
-#errMsg{
+#errMsgs{
   color: #f0ad4e;
   margin-top:0px;
   margin-bottom: 0px; 
@@ -172,6 +172,21 @@ google-map {
        /*max-height: 530px;*/
        /*width: 50%*/
       }
+      .addtodoTask{
+        padding: 20px;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px #666;
+  /*    border-bottom-left-radius: 8px;
+        border-top-left-radius: 5px;*/
+        margin-left: 14px;
+        margin-right: 10px;
+       /*border-radius: 9px/40px;*/
+       margin-bottom: 13px;
+       margin-top:83px;
+       /*max-height: 530px;*/
+       /*width: 50%*/
+      }
       .taskListDiv{
         margin-top: 10px;
       }
@@ -228,7 +243,7 @@ google-map {
         position: absolute;
       }
       #core_toolbar {
-        margin-top: 50px;
+        /*margin-top: 50px;*/
         color: rgb(241, 241, 241);
         fill: rgb(241, 241, 241);
         background-color: rgb(66, 133, 244);
@@ -293,10 +308,10 @@ google-map {
         /*border: 2px solid red;*/
       }
        .taskDetails{
-        margin-right: 30px;
+        /*margin-right: 30px;*/
   /*      margin-left: 20px;*/
-        padding:15px 2px;
-        margin-bottom: 5px;
+        padding:5px 0px;
+        margin-bottom: 2px;
       }
       .taskTitle{
        padding-left: 6px;
@@ -312,26 +327,27 @@ google-map {
       }
       .cardHead{
         /*border-bottom: 1px solid #cdcdcc;*/
-        padding: 10px;
+        /*padding: 10px;*/
         padding-bottom: 0px;
         margin-bottom: 0px;
       }
 
       .cardBody{
-        padding: 5px;
-        font-size: 14px;
-        letter-spacing: 4px;
+        /*padding: 5px;*/
+        font-size: 12px;
+        /*letter-spacing: 4px;*/
         color: #444;
-        padding-right: 2px;
+        /*padding-right: 2px;*/
+        text-align: justify;
       }
       .cardFooter{
         margin-top: 2px;
-        padding: 10px;
+        /*padding: 10px;*/
         background-color: #f6f7f8;
       }
       .cardFooterAdd{
-        margin-top: 19px;
-        padding: 10px;
+        margin-top: 29px;
+        /*padding: 10px;*/
         background-color: #f6f7f8;
       }
       .room:hover{
@@ -378,8 +394,9 @@ google-map {
       }
 
       .cardDesc{
-        padding-left: 10px;
-        padding-right: 10px;
+ /*       padding-left: 10px;
+        padding-right: 10px;*/
+        text-align: justify;
       }
   
       #taskDialog{

@@ -60,42 +60,28 @@
    </section>
   <section id= "section2" main>
     <core-header-panel condenses flex mode="waterfall-tall" id="core_header_panel">
-      <core-toolbar id="core_toolbar" class="tall">
-        <core-icon-button icon="menu" id="core_icon_button" on-tap="{{showDrawer}}" theme="core-light-theme"></core-icon-button>
-        <div id="div" flex></div>
-        <paper-dropdown-menu label="What is your Goal" relative="" layout="" inline="" horizontal="" center="" tabindex="0">
-           <!--  <paper-dropdown class="dropdown core-transition core-closed" tabindex="-1" >
-              <core-menu class="menu">
-                  <paper-item tabindex="0">Learn</paper-item>
-                  <paper-item tabindex="0">Wonder</paper-item>
-                  <paper-item tabindex="0">Make Difference</paper-item>
-                  <paper-item tabindex="0">Conquer</paper-item>
-              </core-menu>
-            </paper-dropdown> -->
-          
-            <!-- geo-location element applied -->
+
+           <!-- geo-location element applied -->
             <div class="userLocation">
               <geo-location watchpos latitude="{{lat}}" longitude="{{longitude}}"></geo-location>
              </div>
-        </paper-dropdown-menu>
-       </core-toolbar>
       <div class="bottom indent todo">
         <!-- *************************add task top card*************************** -->
-        <div class = "todoTask" >   
+        <div class = "addtodoTask" >   
           <div class="cardHead"></div>    
           <div class = "cardBody">
             <form horizontal layout >
               <div class="inputGoal">
               <div>
                 <paper-input-decorator auto-complete floatingLabel label="What is your goal ?" id="taskNameDeco" error="Value must start with a number!">
-                   <input id="taskName" ng-model="formdata.goalName" is="core-input">
+                   <input id="taskName" ng-model="goalformdata.goalName" is="core-input">
                    </paper-input-decorator>
                </div>
                 <div>
-                <paper-input-decorator auto-complete floatingLabel label="write about it .." id="taskDescDeco" error="Value must start with a number!">
-                   <input id="taskDesc" ng-model="formdata.goalDesc" is="core-input">
+                <paper-input-decorator auto-complete floatingLabel label="Write about it .." id="taskDescDeco" error="Value must start with a number!">
+                   <input id="taskDesc" ng-model="goalformdata.goalDesc" is="core-input">
                    </paper-input-decorator>
-                   <p id="errMsg"></p>
+                   <p id="errMsgs"></p>
                </div>
                 <!-- use local ajax -->
                 <div class="buttonAdd">
