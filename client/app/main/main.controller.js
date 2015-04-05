@@ -153,12 +153,6 @@ angular.module('serveMeApp')
     document.getElementById('emailModal').toggle();
      // $scope.sendMail(to,from,subject,text);
    }; 
-  
-  // $scope.taskModal   = function(){
-  //   $scope.taskformdata = {};
-  //   document.getElementById('taskModal').toggle();
-  //    // $scope.sendMail(to,from,subject,text);
-  //  }; 
   $scope.addTaskItem = function (goalId){   
     var dataComing = $scope.taskformdata.task;
     // console.log("dataComing is :",dataComing)

@@ -105,11 +105,10 @@
         <ul class = "holdTaskul" ng-repeat="view in filtered = views | orderBy:'-created'">      
           <div class = "todoTask" >   
               <div class = "cardHead" > 
-                <span class="toggleComplete" ng-click="iDid(view._id)">  
+                <span ng-class="{inActive:'{{view.isActive}}'}" ng-click="iDid(view._id)">  
                   <bs-switch
                       ng-model="view.isTodo"
                       type="checkbox"
-                      switch-active="{{ view.isActive }}"
                       switch-on-text="{{ onText }}"
                       switch-off-text="{{ offText }}"
                       switch-on-color="{{ onColor }}"
@@ -156,7 +155,7 @@
                      </template>
                    </ul> -->
                  </div>
-              <div class = "map" id = "{{view._id}}">
+              <div ng-class="{inActive:'{{view.isActive}}'}" id = "{{view._id}}">
                 <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}" fitToMarkers>
                    <!--    <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
                           draggable="true" title="Go Giants!">
@@ -164,7 +163,7 @@
                    </google-map>
                </div>
               <div class = "taskListClass" id="taskListDiv-{{view._id}}">
-                  <div>
+                  <div ng-class="{inActive:'{{view.isActive}}'}">
                     <paper-input-decorator auto-complete floatingLabel label="Goal specific tasks .. " id="taskNameDeco">
                        <input id="taskName" ng-model="taskformdata.task" is="core-input" required>
                     </paper-input-decorator>
@@ -177,8 +176,8 @@
                       </a>
                       <ul ng-repeat="task in taskdata track by $index">
                         <div class="funkyradio">
-                          <div class="funkyradio-warning">
-                              <input type="checkbox" name="checkbox" id="checkbox1" checked/>
+                          <div class="funkyradio-info">
+                              <input type="checkbox" name="checkbox" id="checkbox{{$index}}" checked/>
                               <label for="checkbox1">{{task.task}}
                                 <!-- <a href="#" class="list-group-item"></a> -->
                               </label>
@@ -205,7 +204,7 @@
                 <!-- </template> -->
 
                 <form id ="uploadForm" enctype ="multipart/form-data" action ="/api/uploads" method ="post">
-                    <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)">
+                    <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
                       <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
                         <input type="file" name="userPhoto" class="upload" />
                       </core-icon-button>
@@ -221,7 +220,7 @@
                 <span ng-click = "showTask(view._id)">
                   <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                  </span>
-                <span ng-click = "mailModal()">
+                <span ng-click = "mailModal()" ng-class="{inActive:'{{view.isActive}}'}">
                   <core-icon-button class="note-add iconbar" icon="mail"></core-icon-button>
                  </span>
                </div>  

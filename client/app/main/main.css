@@ -99,6 +99,10 @@ google-map {
 .map{
   /*display: none;*/
 }
+.inActive{
+  opacity: .5;
+  pointer-events: none;
+}
 .thing-form {
     margin: 20px 0;
 }
