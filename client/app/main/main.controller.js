@@ -197,6 +197,7 @@ angular.module('serveMeApp')
           task_completed : true,
           completed_at : new Date()
         })
+    
    };
 
    
