@@ -191,6 +191,15 @@ angular.module('serveMeApp')
     }
     reader.readAsDataURL(e.target.files[0]);     
    };
+  $scope.taskDone    = function (taskId){
+    // alert("hello I am clicked")
+    $http.put('/api/tasks/'+taskId,{
+          task_completed : true,
+          completed_at : new Date()
+        })
+   };
+
+   
 
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
