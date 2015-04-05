@@ -107,7 +107,8 @@ angular.module('serveMeApp')
          isActive : false,
          onText  : "todo",
          offText : "iDid",
-         taskProgress: 100  
+         taskProgress: 100,
+         goal_completed: new Date()  
       })
       }
   $scope.makeFav     = function (goalId){

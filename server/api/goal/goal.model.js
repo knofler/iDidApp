@@ -17,6 +17,7 @@ var GoalSchema = new Schema({
   taskProgress:Number,
   created_by: String,
   created:Date,
+  goal_completed:Date,
   active: Boolean
 });
 
