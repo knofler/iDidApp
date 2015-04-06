@@ -199,6 +199,25 @@ angular.module('serveMeApp')
         })
     
    };
+  $scope.uploadImage = function (goalId){
+      // console.log("formdata.userPhoto : ",$scope.myFile)
+      var fullPath = document.getElementById('upload-'+goalId).value;
+      console.log("full path is : ", fullPath)
+        if (fullPath) {
+          var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+          var filename = fullPath.substring(startIndex);
+          if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+            filename = filename.substring(1);
+          }
+          // alert(filename);
+         $http.post("/api/uploads/", {
+            img_name:filename,
+            upload_date:new Date()
+          }).success(function(data){
+            console.log(data)
+         }); 
+        }
+   }; 
 
    
 

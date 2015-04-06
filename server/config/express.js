@@ -64,6 +64,13 @@ module.exports = function(app) {
     }
   }));
 
+  // app.post('/api/uploads',function(req,res){
+  //   if(done==true){
+  //     console.log(req.files);
+  //     res.end("File uploaded.");
+  //   }
+  // });
+
   // //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
   app.post('/api/emails/',function(req,res){
     console.log("req received from email service is : ", req.body.to);

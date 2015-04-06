@@ -219,12 +219,14 @@
                 <form id ="uploadForm" enctype ="multipart/form-data" action ="/api/uploads" method ="post">
                     <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
                       <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
-                        <input type="file" name="userPhoto" multiple class="upload" />
+                         <input type="file" id="upload-{{view._id}}" name="userPhoto" multiple class="upload" />
+                         <!-- <input type="file" file-model="myFile"/> -->
                       </core-icon-button>
                      </span>
                     <span class = "fileSubmit" id="fileSubmit-{{view._id}}">
                       <core-icon-button class="cloud-upload iconbar" id="uploadBtn" icon="cloud-upload">
-                        <input type="submit" class="uploadSubmit" name="submit">
+                        <!-- <input type="submit" class="uploadSubmit" name="submit"> -->
+                        <button class="uploadSubmit" ng-click="uploadImage(view._id)">upload me</button>
                       </core-icon-button>
                      </span>
                  </form>
