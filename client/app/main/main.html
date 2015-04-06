@@ -219,7 +219,7 @@
                 <form id ="uploadForm" enctype ="multipart/form-data" action ="/api/uploads" method ="post">
                     <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
                       <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
-                        <input type="file" name="userPhoto" class="upload" />
+                        <input type="file" name="userPhoto" multiple class="upload" />
                       </core-icon-button>
                      </span>
                     <span class = "fileSubmit" id="fileSubmit-{{view._id}}">

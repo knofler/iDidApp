@@ -52,7 +52,7 @@ module.exports = function(app) {
      },
     limits: {
       fieldNameSize: 100,
-      files: 2,
+      files: 20,
       fields: 5
      },
     onFileUploadStart: function (file) {
