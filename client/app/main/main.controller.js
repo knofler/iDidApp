@@ -202,12 +202,20 @@ angular.module('serveMeApp')
   $scope.uploadImage = function (goalId){
     // console.log("formdata.userPhoto : ",$scope.myFile)
     var fullPath = document.getElementById('upload-'+goalId).value;
+
     console.log("full path is : ", fullPath)
       if (fullPath) {
         var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
         var filename = fullPath.substring(startIndex);
         if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-          filename = filename.substring(1);
+          var ext  = filename.substring((filename.length-4));
+          // alert(ext)
+          var date = Date.now()
+          filename = filename.substring(1,(filename.length-4));
+          // alert(filename)
+          filename+=date;
+          filename+=ext
+          // alert(filename);
         }
         // alert(filename);
        $http.post("/api/uploads/", {
@@ -219,7 +227,7 @@ angular.module('serveMeApp')
       }
     }; 
   $scope.toggleImage = function(goalId) {
-     $("#image-"+goalId).delay(200).fadeToggle("slow");
+    $("#image-"+goalId).delay(200).fadeToggle("slow");
    };  
 
    
