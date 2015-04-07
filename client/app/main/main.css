@@ -94,7 +94,7 @@ html /deep/ paper-autogrow-textarea textarea{
 }
 
 google-map {
-    height: 200px;
+    height: 150px;
   }
 .map{
   /*display: none;*/
