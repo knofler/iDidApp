@@ -378,10 +378,13 @@ google-map {
         color: #3B78E7;
       }
       .phone:hover{
-        color: #0D904F;
+        color: #609;
       }
       .star:hover{
         color:orange;
+      }
+      .perm-media:hover{
+        color:green;
       }
       .starFav{
        color:orange;   
@@ -407,6 +410,9 @@ google-map {
       }
       .note-add:hover{
         color:#3e50b4;
+      }
+      .mail:hover{
+        color: orangered;
       }
       .arrowDown{
         float: right;
@@ -572,6 +578,10 @@ google-map {
 .imgBox{
   margin-top: 20px;
   max-width: 950px;
+  display: none;
+}
+.mapBox{
+  /*display: none;*/
 }
 
 img {

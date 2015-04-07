@@ -116,12 +116,12 @@ angular.module('serveMeApp')
        isFav:true
     })
    };    
-  $scope.hideMap     = function (id){
-    console.log("#"+id)
-    $("#"+id).toggle();
+  $scope.toggleMap   = function (id){
+    // console.log("#"+id)
+    $("#map-"+id).delay(200).fadeToggle("slow");
    };
   $scope.showUpload  = function (goalId){
-    console.log("Upload clicked: ",'#fileUpload-'+goalId);
+    // console.log("Upload clicked: ",'#fileUpload-'+goalId);
     $('#fileUpload-'+goalId).hide();
     $('#fileSubmit-'+goalId).show();
     // $('.fileSubmit').show();
@@ -169,14 +169,14 @@ angular.module('serveMeApp')
   $scope.showTask    = function(goalId){
     $scope.taskdata = '';
     $http.get('/api/tasks/goals/'+goalId).success(function(data){
-        console.log("task for this id is :", data);
+        // console.log("task for this id is :", data);
         $scope.taskdata = data;
         socket.syncUpdates('task', $scope.taskdata);
     })
     var id = "taskListDiv-"+goalId
-    console.log("id made is :", id)
-    $('.taskListClass').hide()
-    $("#"+id).toggle()
+    // console.log("id made is :", id)
+    // $('.taskListClass').hide()
+    $("#"+id).delay(200).fadeToggle("slow")
    };  
   $scope.handleImage = function (e){
     var reader = new FileReader();
@@ -200,24 +200,27 @@ angular.module('serveMeApp')
     
    };
   $scope.uploadImage = function (goalId){
-      // console.log("formdata.userPhoto : ",$scope.myFile)
-      var fullPath = document.getElementById('upload-'+goalId).value;
-      console.log("full path is : ", fullPath)
-        if (fullPath) {
-          var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-          var filename = fullPath.substring(startIndex);
-          if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-            filename = filename.substring(1);
-          }
-          // alert(filename);
-         $http.post("/api/uploads/", {
-            img_name:filename,
-            upload_date:new Date()
-          }).success(function(data){
-            console.log(data)
-         }); 
+    // console.log("formdata.userPhoto : ",$scope.myFile)
+    var fullPath = document.getElementById('upload-'+goalId).value;
+    console.log("full path is : ", fullPath)
+      if (fullPath) {
+        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+        var filename = fullPath.substring(startIndex);
+        if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+          filename = filename.substring(1);
         }
-   }; 
+        // alert(filename);
+       $http.post("/api/uploads/", {
+          img_name:filename,
+          upload_date:new Date()
+        }).success(function(data){
+          console.log(data)
+       }); 
+      }
+    }; 
+  $scope.toggleImage = function(goalId) {
+     $("#image-"+goalId).delay(200).fadeToggle("slow");
+   };  
 
    
 

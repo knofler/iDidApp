@@ -155,25 +155,25 @@
                      </template>
                    </ul> -->
                  </div>
-              <div ng-class="{inActive:'{{view.isActive}}'}" id = "{{view._id}}">
+              <div class= "mapBox" ng-class="{inActive:'{{view.isActive}}'}" id = "map-{{view._id}}">
                 <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}" fitToMarkers>
                    <!--    <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
                           draggable="true" title="Go Giants!">
                       </google-map-marker> -->
                    </google-map>
                </div>
-      <div class="container imgBox">
-        <div class="row">
-          <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
-              <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
-              <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
-              <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
-            <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
-              <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
-            <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
-              <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
-          </div>
-        </div>
+              <div class="container imgBox" id="image-{{view._id}}">
+                <div class="row">
+                  <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
+                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
+                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
+                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
+                    <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
+                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
+                    <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
+                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
+                  </div>
+                </div>
               <div class = "taskListClass" id="taskListDiv-{{view._id}}">
                   <div ng-class="{inActive:'{{view.isActive}}'}">
                     <paper-input-decorator auto-complete floatingLabel label="Goal specific tasks .. " id="taskNameDeco">
@@ -201,7 +201,7 @@
                  </div>
               <div class = "cardComment" >        
               <div class = "cardFooter" >
-                <span ng-click = "hideMap(view._id)">
+                <span ng-click = "toggleMap(view._id)">
                   <core-icon-button class="room iconbar" icon="room">
                   </core-icon-button>
                  </span>
@@ -212,6 +212,10 @@
                   <template bind if="{{ view.isFav == false}}"> -->
                 <span ng-click = "makeFav(view._id)" >
                   <core-icon-button class="star iconbar" icon="star" ng-class="{starFav:view.isFav}">
+                  </core-icon-button>
+                 </span>
+                 <span ng-click = "toggleImage(view._id)" >
+                  <core-icon-button class="perm-media iconbar" icon="perm-media">
                   </core-icon-button>
                  </span>
                 <!-- </template> -->
@@ -236,7 +240,7 @@
                   <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                  </span>
                 <span ng-click = "mailModal()" ng-class="{inActive:'{{view.isActive}}'}">
-                  <core-icon-button class="note-add iconbar" icon="mail"></core-icon-button>
+                  <core-icon-button class="mail iconbar" icon="mail"></core-icon-button>
                  </span>
                </div>  
          </ul>    
