@@ -6,6 +6,7 @@ angular.module('serveMeApp')
       .state('todo', {
         url: '/todo',
         templateUrl: 'app/todo/todo.html',
-        controller: 'TodoCtrl'
+        controller: 'TodoCtrl',
+        authenticate: true
       });
   });

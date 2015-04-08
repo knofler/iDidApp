@@ -6,6 +6,7 @@ angular.module('serveMeApp')
       .state('idid', {
         url: '/idid',
         templateUrl: 'app/idid/idid.html',
-        controller: 'IdidCtrl'
+        controller: 'IdidCtrl',
+        authenticate: true
       });
   });

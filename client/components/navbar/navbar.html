@@ -14,7 +14,7 @@
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-         <li ng-repeat="item in loggedinMenu" ng-class="{active: isActive(loggedinMenu.link)}" ng-show="isLoggedIn()" popover-placement="bottom"
+         <li ng-repeat="item in loggedinMenu" ng-class="{active: isActive(loggedinMenu.link)}" ng-show="isUser()" popover-placement="bottom"
         popover="{{item.popMsg}}" popover-trigger="mouseenter">
              <a ng-href="{{item.link}}">{{item.title}}</a></li>
         </li>

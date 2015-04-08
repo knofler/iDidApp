@@ -135,6 +135,9 @@ angular.module('serveMeApp')
       isAdmin: function() {
         return currentUser.role === 'admin';
       },
+      isUser:function(){
+        return currentUser.role === 'user';
+      },
 
       /**
        * Get auth token

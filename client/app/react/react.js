@@ -6,6 +6,7 @@ angular.module('serveMeApp')
       .state('react', {
         url: '/react',
         templateUrl: 'app/react/react.html',
-        controller: 'ReactCtrl'
+        controller: 'ReactCtrl',
+        authenticate: true
       });
   });

@@ -3,7 +3,7 @@
 angular.module('serveMeApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [
-      // {'title': 'Home','link': '/'}
+      {'title': 'Home','link': '/'}
       ];
     $scope.loggedinMenu =[
       {'title': 'toDo','link': '/todo'},
@@ -15,7 +15,7 @@ angular.module('serveMeApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
-    
+    $scope.isUser         = Auth.isUser;
 
     $scope.logout = function() {
       Auth.logout();
