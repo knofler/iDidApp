@@ -12,6 +12,16 @@ exports.index = function(req, res) {
 };
 
 // Get list of applications by Name
+exports.userGoal = function(req, res) {
+  var userid = req.params.userid;
+  Goal.find(
+   {"created_by":userid},function (err, goals) {
+      if(err) { return handleError(res, err); }
+      return res.json(goals);
+    });
+};
+
+// Get list of applications by Name
 exports.idid = function(req, res) {
   var status= req.query.taskstatus;
   Goal.find(

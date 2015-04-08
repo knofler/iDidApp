@@ -10,6 +10,8 @@ var EmailSchema = new Schema({
   text:String,		
   name: String,
   info: String,
+  created_at:Date,
+  created_by:String,
   active: Boolean
 });
 

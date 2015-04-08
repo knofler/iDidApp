@@ -3,9 +3,13 @@
 angular.module('serveMeApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [
-      {'title': 'Home','link': '/'},
-      {'title': 'React','link':'/react'}
+      // {'title': 'Home','link': '/'}
       ];
+    $scope.loggedinMenu =[
+      {'title': 'toDo','link': '/todo'},
+      {'title': 'iDid','link': '/idid'}
+      // {'title': 'React','link':'/react'}
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;

@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var UploadSchema = new Schema({
   img_name: String,
   upload_date:Date,
+  uploaded_by:String,
   active: Boolean
 });
 
