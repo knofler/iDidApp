@@ -1,7 +1,7 @@
 // 'use strict';
 
 angular.module('serveMeApp')
-  .controller('TodoCtrl', function ($scope, $http, socket, $location, $anchorScroll,Auth) {
+  .controller('TodoCtrl', function ($scope,main,$http, socket, $location, $anchorScroll,Auth) {
     
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
@@ -37,11 +37,6 @@ angular.module('serveMeApp')
 
   // ########## API CALLS and Promises #################
 
-  //get current todo task views
-  $http.get('/api/goals/name/'+$scope.getCurrentUser()._id).success(function(goals) {
-        $scope.views = goals;
-        socket.syncUpdates('goal', $scope.views);
-    });
   //get completed task view, aka idid views
   $http.get('/api/goals/idid/',{
     params:{
@@ -250,8 +245,10 @@ angular.module('serveMeApp')
  
   // ########## Event Controls with socketio #########
   $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-      });
+    socket.unsyncUpdates('thing');
+   });
+
+  main.getUserGoals($scope.getCurrentUser()._id);
   
   });
 

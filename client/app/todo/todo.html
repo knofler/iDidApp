@@ -102,7 +102,7 @@
         <!-- ************************* end of add task top card *************************** -->
 
         <!-- ***************************Each card for task display******************** -->       
-        <ul class = "holdTaskul" ng-repeat="view in filtered = views | orderBy:'-created'">      
+        <ul class = "holdTaskul" ng-repeat="view in filtered = userGoalArr | orderBy:'-created'">      
           <div class = "todoTask" >   
               <div class = "cardHead" > 
                 <span ng-class="{inActive:'{{view.isActive}}'}" ng-click="iDid(view._id)">  
