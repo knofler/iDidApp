@@ -39,11 +39,8 @@ angular.module('serveMeApp')
 
   //get current todo task views
   $http.get('/api/goals/name/'+$scope.getCurrentUser()._id).success(function(goals) {
-    console.log("goals " , goals)
-    goals.forEach(function(data){
         $scope.views = goals;
         socket.syncUpdates('goal', $scope.views);
-      });
     });
   //get completed task view, aka idid views
   $http.get('/api/goals/idid/',{
