@@ -41,11 +41,9 @@ angular.module('serveMeApp')
   $http.get('/api/goals/name/'+$scope.getCurrentUser()._id).success(function(goals) {
     console.log("goals " , goals)
     goals.forEach(function(data){
-      if (data.created_by == $scope.getCurrentUser()._id){
         $scope.views = goals;
         socket.syncUpdates('goal', $scope.views);
-      }
-    });
+      });
     });
   //get completed task view, aka idid views
   $http.get('/api/goals/idid/',{
