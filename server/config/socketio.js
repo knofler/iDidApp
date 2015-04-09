@@ -56,6 +56,7 @@ module.exports = function (socketio) {
 
     // Call onConnect.
     onConnect(socket);
-    console.info('[%s] CONNECTED', socket.address);
+    // console.info('[%s] CONNECTED', socket.address);
+    console.info('[%s] CONNECTED', socket.decoded_token._id);
   });
 };
