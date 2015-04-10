@@ -27,7 +27,8 @@
     "baasic-crud": "~0.1.6",
     "angular-bootstrap-switch": "~0.3.0",
     "geo-location": "ebidel/geo-location#master",
-    "google-map": "GoogleWebComponents/google-map#master"
+    "google-map": "GoogleWebComponents/google-map#master",
+    "c3": "~0.4.10"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
