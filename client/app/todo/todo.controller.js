@@ -1,7 +1,7 @@
 // 'use strict';
 
 angular.module('serveMeApp')
-  .controller('TodoCtrl', function ($scope,main,$http, socket, $location, $anchorScroll,Auth) {
+  .controller('TodoCtrl', function ($scope,main,$http, socket, $location, $anchorScroll,Auth,$filter) {
     
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
@@ -82,7 +82,7 @@ angular.module('serveMeApp')
               latitude:$scope.getLatitude,
               longitude:$scope.getLongitude,
               taskProgress: 5,
-              created: new Date(),
+              created: $filter('date')(new Date(),'short'),
               created_by:$scope.getCurrentUser()._id  
             });
             $scope.goalformdata = {}; 
@@ -140,7 +140,7 @@ angular.module('serveMeApp')
 
     },200);
     };
-  $scope.mailModal   = function(){
+  $scope.mailModal   = function (){
     $scope.formdata = {};
     document.getElementById('emailModal').toggle();
      // $scope.sendMail(to,from,subject,text);
@@ -158,7 +158,7 @@ angular.module('serveMeApp')
       }
     $scope.taskformdata = {}
     };
-  $scope.showTask    = function(goalId){
+  $scope.showTask    = function (goalId){
     $scope.taskdata = '';
     $http.get('/api/tasks/goals/'+goalId).success(function(data){
         // console.log("task for this id is :", data);
@@ -219,11 +219,10 @@ angular.module('serveMeApp')
        }); 
       }
     }; 
-  $scope.toggleImage = function(goalId) {
+  $scope.toggleImage = function (goalId) {
     $("#image-"+goalId).delay(200).fadeToggle("slow");
    };  
 
-   
 
   // scroll to feature included for SPA App
   $scope.scrollTo    = function(id) {
