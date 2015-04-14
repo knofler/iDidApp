@@ -27,8 +27,39 @@ angular.module('serveMeApp')
 		    	console.log("Goal Name is :",$scope.goal_name);
 		    	console.log("duration is : ", duration)
 		    })
-		 socket.syncUpdates('goal', $scope.goal_create_date);
+		 socket.syncUpdates('goal', $scope.ididViews);
 	   });
+	
+	//Socket to update graph on idid action
+	socket.socket.on('updateGraph',function(data){
+		console.log($scope.goal_create_date)
+		console.log($scope.goal_completed_date)
+		// By using load() API, you can load data and update the chart dynamically as follows:
+		// *****************Generate chart without data********************
+		$scope.apiChart = c3.generate({
+			bindto:'#apiChart',
+			data:{
+				x:'created',
+			    columns:[
+			    	$scope.goal_create_date,
+			    	// ['static', "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12"],
+				    	['goal',$scope.goal_name],
+				    	['data1', 130, 340, 200, 500, 250, 350],
+				    	['data2', 530, 740, 600, 900, 150, 850]
+			    	]
+			},
+			axis: {
+				x:{
+		        	type: 'timeseries',
+		        	tick: {
+		            	format: '%Y-%m-%d'
+		        	}
+		        }
+		    }    
+		 });
+		});
+
+	//On Page load run
 	setTimeout(function(){
 		console.log($scope.goal_create_date)
 		console.log($scope.goal_completed_date)
@@ -56,8 +87,10 @@ angular.module('serveMeApp')
 		    }    
 		 });
 	   },500)
+	
 
 	  // ************Load Data **************************
+
 	$scope.loadData = function(){
 	  // alert($scope.goal_create_date)
 	  $scope.apiChart.load({

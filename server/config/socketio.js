@@ -48,6 +48,10 @@ module.exports = function (socketio) {
 
     socket.connectedAt = new Date();
 
+    socket.on('idid',function(data){
+      socket.broadcast.emit('updateGraph',{data:data});
+      })
+
     // Call onDisconnect.
     socket.on('disconnect', function () {
       onDisconnect(socket);

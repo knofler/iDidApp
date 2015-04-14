@@ -99,6 +99,7 @@ angular.module('serveMeApp')
          taskProgress: 100,
          goal_completed: new Date()
       })
+      socket.socket.emit('idid',"Emit idid Job");
       }
   $scope.makeFav     = function (goalId){
    $http.put('/api/goals/'+goalId,{
