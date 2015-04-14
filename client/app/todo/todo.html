@@ -190,7 +190,7 @@
                         <div class="funkyradio">
                           <div class="funkyradio-info">
                 <input type="checkbox" name="checkbox" id="checkbox{{view._id}}{{$index}}" ng-model="task.task_completed"
-                              ng-click="taskDone(task._id)"/>
+                              ng-click="taskDone(view._id,task._id)"/>
                               <label for="checkbox{{view._id}}{{$index}}">{{task.task}}
                                 <!-- <a href="#" class="list-group-item"></a> -->
                               </label>

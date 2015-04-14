@@ -146,6 +146,7 @@ angular.module('serveMeApp')
      // $scope.sendMail(to,from,subject,text);
    }; 
   $scope.addTaskItem = function (goalId){   
+    var id = "taskListDiv-"+goalId;
     var dataComing = $scope.taskformdata.task;
     // console.log("dataComing is :",dataComing)
     if(dataComing !==undefined){
@@ -154,7 +155,18 @@ angular.module('serveMeApp')
           task : dataComing,
           created_at : new Date(),
           created_by:$scope.getCurrentUser()._id  
-        })
+        }).success(function(){
+          $http.get("/api/goals/"+goalId).success(function(data){
+            var taskProg = data.taskProgress; 
+              if (taskProg <= 90){
+                $http.put('/api/goals/'+goalId,{
+                   taskProgress: taskProg+5
+                 }).success(function(){
+                  $("#"+id).show()
+                 })
+              }
+          }); 
+        });
       }
     $scope.taskformdata = {}
     };
@@ -183,12 +195,23 @@ angular.module('serveMeApp')
     }
     reader.readAsDataURL(e.target.files[0]);     
    };
-  $scope.taskDone    = function (taskId){
+  $scope.taskDone    = function (goalId,taskId){
+    var id = "taskListDiv-"+goalId;
     // alert("hello I am clicked")
     $http.put('/api/tasks/'+taskId,{
           task_completed : true,
           completed_at : new Date()
         })
+    $http.get("/api/goals/"+goalId).success(function(data){
+      var taskProg = data.taskProgress; 
+        if (taskProg <= 90){
+          $http.put('/api/goals/'+goalId,{
+             taskProgress: taskProg+10
+           }).success(function(){
+                $("#"+id).show()
+              })
+         } 
+      }); 
     
    };
   $scope.uploadImage = function (goalId){
