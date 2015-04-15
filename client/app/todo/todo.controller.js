@@ -234,13 +234,13 @@ angular.module('serveMeApp')
           // alert(filename);
         }
         // alert(filename);
-       $http.post("/api/uploads/", {
-          img_name:filename,
-          upload_date:new Date(),
-          uploaded_by:$scope.getCurrentUser()._id  
-        }).success(function(data){
-          console.log(data)
-       }); 
+       // $http.post("/api/uploads/", {
+       //    img_name:filename,
+       //    upload_date:new Date(),
+       //    uploaded_by:$scope.getCurrentUser()._id  
+       //  }).success(function(data){
+       //    console.log(data)
+       // }); 
       }
     }; 
   $scope.toggleImage = function (goalId) {

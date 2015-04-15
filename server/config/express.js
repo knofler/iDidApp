@@ -30,6 +30,7 @@ var smtpTransport = nodemailer.createTransport({
     }
 });
 
+var Upload = require('../api/upload/upload.model');
 
 module.exports = function(app) {
   var env = app.get('env');
@@ -64,12 +65,22 @@ module.exports = function(app) {
     }
   }));
 
-  // app.post('/api/uploads',function(req,res){
-  //   if(done==true){
-  //     console.log(req.files);
-  //     res.end("File uploaded.");
-  //   }
-  // });
+//receive upload image resource and send image information to database
+  app.post('/uploads',function(req,res){
+    if(done==true){
+      console.log(req.files.userPhoto.name);
+        Upload.create({
+          img_name:req.files.userPhoto.name,
+          upload_date:new Date()
+          // uploaded_by:$scope.getCurrentUser()._id  
+        }, function(err, upload) {
+          if(err) { return handleError(res, err); }
+          return res.json(201, upload);
+          // res.end("File uploaded.");
+        });
+  
+    }
+  });
 
   // //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
   app.post('/api/emails/',function(req,res){
