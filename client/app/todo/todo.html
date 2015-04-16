@@ -163,15 +163,34 @@
                    </google-map>
                </div>
               <div class="container imgBox" id="image-{{view._id}}">
-                <div class="row">
-                  <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
-                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
-                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
-                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
-                    <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" /></div>
-                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" /></div>
-                    <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" /></div>
-                      <div class="col-md-3 col-sm-4 col-xs-6"><img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" /></div>
+                <div class="row" ng-repeat="image in imageData track by $index">
+                  <div class="col-md-3 col-sm-4 col-xs-6">
+                    <img class="img-responsive" src="{{image.path}}" />
+                  </div>
+                    <!-- <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"/>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" />
+                     </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                      <img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" />
+                    </div> -->
                   </div>
                 </div>
               <div class = "taskListClass" id="taskListDiv-{{view._id}}">
@@ -224,9 +243,12 @@
                     <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
                       <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
                          <input type="file" id="upload-{{view._id}}" name="userPhoto" multiple class="upload" />
+                         <input type="hidden" name="goal_id" value="{{view._id}}" />
+                         <input type="hidden" name="user_id" value="{{getCurrentUser()._id}}" />
                          <!-- <input type="file" file-model="myFile"/> -->
                       </core-icon-button>
                      </span>
+
                     <span class = "fileSubmit" id="fileSubmit-{{view._id}}">
                       <core-icon-button class="cloud-upload iconbar" id="uploadBtn" icon="cloud-upload">
                         <!-- <input type="submit" class="uploadSubmit" name="submit"> -->

@@ -21,7 +21,6 @@ var mongoose        = require('mongoose');
 var multer          = require('multer');
 var nodemailer      = require('nodemailer');
 var Upload          = require('../api/upload/upload.model');
-// var auth            = require('../auth/auth.service');
 
 // create reusable transporter object using SMTP transport
 var smtpTransport = nodemailer.createTransport({
@@ -68,17 +67,23 @@ module.exports = function(app) {
   //receive upload image resource and send image information to database
   app.post('/uploads',function(req,res){
     if(done==true){
+      var org_path = req.files.userPhoto.path;
+      console.log("org_path is : ", org_path);
+      var new_path = org_path.replace("client/", "");
+      console.log("new path is : ", new_path);
       console.log(req.files);
-      // console.log(req.files.userPhoto.name);
+      console.log("goal id is : " , req.body.goal_id);
+      console.log("user id is : " , req.body.user_id);
       Upload.create({
+        goal_id:req.body.goal_id,
         original_name:req.files.userPhoto.originalname,
         new_name:req.files.userPhoto.name,
         mimeType:req.files.userPhoto.mimetype,
-        path:req.files.userPhoto.path,
+        path:new_path,
         ext:req.files.userPhoto.extension,
         size:req.files.userPhoto.size,
-        upload_date:new Date()
-        // uploaded_by:auth.getCurrentUser()._id  
+        upload_date:new Date(),
+        uploaded_by:req.body.user_id  
        },function(err, upload) {
             if(err) { return handleError(res, err); }
             return res.json(201, upload);

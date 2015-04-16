@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var UploadSchema = new Schema({
+  goal_id:String,	
   original_name:String,
   new_name: String,
   mimeType:String,

@@ -15,7 +15,7 @@ angular.module('serveMeApp')
    $scope.radioOff     = true;
    $scope.label        = "Goals";
    $scope.onColor      = "warning";
-   $scope.offColor     = "success"
+   $scope.offColor     = "success";
 
    //get user info
    $scope.getCurrentUser = Auth.getCurrentUser;
@@ -180,7 +180,7 @@ angular.module('serveMeApp')
     })
     var id = "taskListDiv-"+goalId
     // console.log("id made is :", id)
-    // $('.taskListClass').hide()
+    $('.taskListClass').hide()
     $("#"+id).delay(200).fadeToggle("slow")
    };  
   $scope.handleImage = function (e){
@@ -244,6 +244,13 @@ angular.module('serveMeApp')
       }
     }; 
   $scope.toggleImage = function (goalId) {
+    $scope.imageData = '';
+    $http.get('/api/uploads/goals/'+goalId).success(function(data){
+        // console.log("image data for this id are :", data);
+        $scope.imageData = data;
+        socket.syncUpdates('upload', $scope.imageData);
+    })
+     $('.imgBox').hide()
     $("#image-"+goalId).delay(200).fadeToggle("slow");
    };  
 

@@ -20,6 +20,15 @@ exports.show = function(req, res) {
   });
 };
 
+// Get list of tasks for goals id
+exports.goalsImage = function(req, res) {
+  var goal_id = req.params.goalid
+  Upload.find({"goal_id":goal_id},function (err, uploads) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, uploads);
+  });
+};
+
 // Creates a new upload in the DB.
 exports.create = function(req, res) {
   Upload.create(req.body, function(err, upload) {

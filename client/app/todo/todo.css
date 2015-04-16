@@ -423,6 +423,10 @@ google-map {
         display: none;
       }
 
+      .ListClass{
+        display: none;
+      }
+
       .cardDesc{
  /*       padding-left: 10px;
         padding-right: 10px;*/
