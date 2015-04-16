@@ -46,9 +46,10 @@ module.exports = function(app) {
 
   /*Configure the multer.*/
   var done=false;
+  var rand = Math.random();
   app.use(multer({ dest: './client/assets/images/uploads/',
     rename: function (fieldname, filename) {
-      return filename+"-"+Date.now();
+      return filename+"-"+rand;
      },
     limits: {
       fieldNameSize: 100,
