@@ -47,7 +47,9 @@ module.exports = function(app) {
   /*Configure the multer.*/
   var done=false;
   var rand = Math.random();
-  app.use(multer({ dest: './client/assets/images/uploads/',
+  app.use(multer({ 
+    // dest: './dist/public/assets/images/uploads/',
+    dest: './client/assets/images/uploads/',
     rename: function (fieldname, filename) {
       return filename+"-"+rand;
      },
@@ -64,13 +66,16 @@ module.exports = function(app) {
       done=true;
     }
     }));
-
   //receive upload image resource and send image information to database
   app.post('/uploads',function(req,res){
     if(done==true){
       var org_path = req.files.userPhoto.path;
+      var new_path ;
+      
+      // new_path = org_path.replace("dist/public/", "");
+      new_path = org_path.replace("client/", "");
+
       console.log("org_path is : ", org_path);
-      var new_path = org_path.replace("client/", "");
       console.log("new path is : ", new_path);
       console.log(req.files);
       console.log("goal id is : " , req.body.goal_id);
