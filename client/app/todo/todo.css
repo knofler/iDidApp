@@ -84,7 +84,7 @@ html /deep/ paper-autogrow-textarea textarea{
 .uploadSubmit{
   position: relative;
   font-size: 9px;
-  line-height: 0;
+  line-height:1;
   top: -20px;
   right: 0;
   left: -7px;

@@ -20,17 +20,17 @@ var mongoStore      = require('connect-mongo')(session);
 var mongoose        = require('mongoose');
 var multer          = require('multer');
 var nodemailer      = require('nodemailer');
+var Upload          = require('../api/upload/upload.model');
+// var auth            = require('../auth/auth.service');
 
 // create reusable transporter object using SMTP transport
 var smtpTransport = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'nodemailer.me@gmail.com',
-        pass: 'tst_node123'
-    }
-});
-
-var Upload = require('../api/upload/upload.model');
+  service: 'Gmail',
+  auth: {
+      user: 'nodemailer.me@gmail.com',
+      pass: 'tst_node123'
+  }
+  });
 
 module.exports = function(app) {
   var env = app.get('env');
@@ -49,7 +49,7 @@ module.exports = function(app) {
   var done=false;
   app.use(multer({ dest: './client/assets/images/uploads/',
     rename: function (fieldname, filename) {
-      return filename+Date.now();
+      return filename+"-"+Date.now();
      },
     limits: {
       fieldNameSize: 100,
@@ -63,26 +63,31 @@ module.exports = function(app) {
       console.log(file.fieldname + ' uploaded to  ' + file.path)
       done=true;
     }
-  }));
+    }));
 
-//receive upload image resource and send image information to database
+  //receive upload image resource and send image information to database
   app.post('/uploads',function(req,res){
     if(done==true){
-      console.log(req.files.userPhoto.name);
-        Upload.create({
-          img_name:req.files.userPhoto.name,
-          upload_date:new Date()
-          // uploaded_by:$scope.getCurrentUser()._id  
-        }, function(err, upload) {
-          if(err) { return handleError(res, err); }
-          return res.json(201, upload);
-          // res.end("File uploaded.");
+      console.log(req.files);
+      // console.log(req.files.userPhoto.name);
+      Upload.create({
+        original_name:req.files.userPhoto.originalname,
+        new_name:req.files.userPhoto.name,
+        mimeType:req.files.userPhoto.mimetype,
+        path:req.files.userPhoto.path,
+        ext:req.files.userPhoto.extension,
+        size:req.files.userPhoto.size,
+        upload_date:new Date()
+        // uploaded_by:auth.getCurrentUser()._id  
+       },function(err, upload) {
+            if(err) { return handleError(res, err); }
+            return res.json(201, upload);
+            // res.end("File uploaded.");
         });
-  
-    }
-  });
+     }
+   });
 
-  // //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
+  //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
   app.post('/api/emails/',function(req,res){
     console.log("req received from email service is : ", req.body.to);
     var toMail = req.body.to;
@@ -103,7 +108,7 @@ module.exports = function(app) {
              console.log("Message sent: " + response.message);
          }
       });
-  });
+    });
 
   // Persist sessions with mongoStore
   // We need to enable sessions for passport twitter because its an oauth 1.0 strategy
@@ -112,15 +117,14 @@ module.exports = function(app) {
     resave: true,
     saveUninitialized: true,
     store: new mongoStore({ mongoose_connection: mongoose.connection })
-  }));
+    }));
   
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
     app.set('appPath', config.root + '/public');
     app.use(morgan('dev'));
-  }
-
+    }
   if ('development' === env || 'test' === env) {
     app.use(require('connect-livereload')());
     app.use(express.static(path.join(config.root, '.tmp')));
@@ -128,5 +132,6 @@ module.exports = function(app) {
     app.set('appPath', 'client');
     app.use(morgan('dev'));
     app.use(errorHandler()); // Error handler - has to be last
-  }
-};
+   }
+
+ };
