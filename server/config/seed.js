@@ -49,52 +49,190 @@ var Goal = require('../api/goal/goal.model');
 //   );
 // });
 
-// Goal.find({}).remove(function() {
-//   Goal.create({
-//     isActive:true,
-//     isTodo : true,
-//     goalName : 'Learn Data science',
-//     goalDesc : 'Data science will help me to know more about data pattern',
-//     userLocation:'sydney',
-//     isFav:'no',
-//     contact:'0412649744',
-//     taskProgress:25,
-//     created_by:'rumman',
-//     created: '1416355200'
-//   }, {
-//     isActive:true,
-//     isTodo   : true, 
-//     goalName : 'Go to space',
-//     goalDesc : 'space is the final frontier',
-//     userLocation:'brisbane',
-//     isFav:'yes',
-//     contact:'0402506607',
-//     taskProgress:75,
-//     created_by:'lia',
-//     created: '1416355910'
-//   }, {
-//     isActive:true,
-//     isTodo  : true,
-//     goalName : 'Play tennis',
-//     goalDesc : 'get body fit',
-//     userLocation:'Melbourne',
-//     isFav:'yes',
-//     contact:'0433568974',
-//     taskProgress:25,
-//     created_by:'ruhan',
-//     created: "1416355000"
-//   }, {
-//     isActive:false,
-//     isTodo   : false,
-//     goalName : 'Build swimming pool',
-//     goalDesc : 'Get a swimming pool for backyard',
-//     userLocation:'Perth',
-//     isFav:'Yes',
-//     contact:'0412649744',
-//     taskProgress:55,
-//     created_by:'rumman',
-//     created: "1416355200"
-//   } 
-//   );
-// });
+Goal.find({}).remove(function() {
+  Goal.create(
+  	{
+    "goalName" : "Goal One",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2008-04-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2008-12-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Two",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2005-04-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2005-04-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Three",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2002-04-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2002-03-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Four",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2004-01-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2004-04-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Five",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2010-07-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2011-03-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Six",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2003-12-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2003-04-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal Seven",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2006-01-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2006-03-17T11:01:23.460Z",
+    "isActive" : false
+},{
+    "goalName" : "Goal 8",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2007-06-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2007-12-17T11:01:23.460Z",
+    "isActive" : false
+}
+,{
+    "goalName" : "Goal 9",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2009-04-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2009-10-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal 10",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2011-07-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2011-12-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal 11",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2010-01-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2010-04-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal 12",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2011-11-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2011-03-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal 13",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2012-12-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2012-11-17T11:01:23.460Z",
+    "isActive" : false
+},
+{
+    "goalName" : "Goal 14",
+    "goalDesc" : "goal Desc",
+    "isTodo" : false,
+    "isFav" : false,
+    "latitude" : "-33.7061491",
+    "longitude" : "150.90369529999998",
+    "taskProgress" : 100,
+    "created" : "2012-10-17T11:01:00.000Z",
+    "created_by" : "55094a4233ae68a301aef6eb",
+    "goal_completed" : "2013-11-17T11:01:23.460Z",
+    "isActive" : false
+}
+
+  );
+});
 

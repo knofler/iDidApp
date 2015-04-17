@@ -4,7 +4,7 @@ angular.module('serveMeApp')
 	.controller('MainCtrl', function ($scope,$http,socket,$filter) {
 
 	$scope.goal_create_date 	= ["created"];
-	$scope.goal_completed_date  = ["completed"];
+	$scope.goal_completed_date  = ["goal_completed"];
 	$scope.goal_name 		    = ["goal"];
 
 	//get completed task view, aka idid views
@@ -36,26 +36,17 @@ angular.module('serveMeApp')
 		console.log($scope.goal_completed_date)
 		// By using load() API, you can load data and update the chart dynamically as follows:
 		// *****************Generate chart without data********************
-		$scope.apiChart = c3.generate({
-			bindto:'#apiChart',
-			data:{
-				x:'created',
+		$scope.apiChart.load({
 			    columns:[
 			    	$scope.goal_create_date,
 			    	// ['static', "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12"],
 				    	['goal',$scope.goal_name],
-				    	['data1', 130, 340, 200, 500, 250, 350],
-				    	['data2', 530, 740, 600, 900, 150, 850]
-			    	]
-			},
-			axis: {
-				x:{
-		        	type: 'timeseries',
-		        	tick: {
-		            	format: '%Y-%m-%d'
-		        	}
-		        }
-		    }    
+				    	['data1', 13, 34, 20, 50, 25, 35,34, 20, 50, 25, 35,22,32,12],
+				    	['data2', 34, 20, 50, 25, 35,53, 74, 60, 90, 15, 85,45,13,22]
+			    	],
+			    types:{
+					data2:'line' //Add
+				}		  
 		 });
 		});
 
@@ -73,8 +64,8 @@ angular.module('serveMeApp')
 			    	$scope.goal_create_date,
 			    	// ['static', "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12", "2015-04-12"],
 				    	['goal',$scope.goal_name],
-				    	['data1', 130, 340, 200, 500, 250, 350],
-				    	['data2', 530, 740, 600, 900, 150, 850]
+		  				// ['data1', 130, 340, 200, 500, 250, 350,340, 200, 500, 250, 350,222,321,123],
+				    	['data2', 340, 200, 500, 250, 350,530, 740, 600, 900, 150, 850,456,123,222]
 			    	]
 			},
 			axis: {
