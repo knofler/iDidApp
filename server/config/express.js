@@ -21,6 +21,14 @@ var mongoose        = require('mongoose');
 var multer          = require('multer');
 var nodemailer      = require('nodemailer');
 var Upload          = require('../api/upload/upload.model');
+var cloudinary      = require('cloudinary');
+
+//Cloudinary configuration
+cloudinary.config({ 
+  cloud_name: 'hjx9vff81', 
+  api_key: '655688376758282', 
+  api_secret: 'HJbVED4MGL3QwLUCrVl9d7-PZyY' 
+  });
 
 // create reusable transporter object using SMTP transport
 var smtpTransport = nodemailer.createTransport({
@@ -44,16 +52,15 @@ module.exports = function(app) {
   app.use(cookieParser());
   app.use(passport.initialize());
 
+
   /*Configure the multer.*/
   var done=false;
   var rand = Math.random();
   app.use(multer({ 
-    // ************enable this one for production***********
-    // dest: './dist/public/assets/images/uploads/',
 
     // ************enable this one for Development***********
     dest: './client/assets/images/uploads/',
-    
+
     rename: function (fieldname, filename) {
       return filename+"-"+rand;
      },
@@ -70,40 +77,72 @@ module.exports = function(app) {
       done=true;
     }
     }));
-  //receive upload image resource and send image information to database
+
+  //receive upload image resource and send image information to Cloudinary for producton storage and database for usage
   app.post('/uploads',function(req,res){
     if(done==true){
-      var org_path = req.files.file.path;
-      var new_path ;
-
-      // ************enable this one for production***********
-      // new_path = org_path.replace("dist/public/", "");
+    
+      //upload image to cloudinary
+      cloudinary.uploader.upload(
+        req.files.file.path,
+        function(result) { 
+          Upload.create({
+            goal_id:req.body.goal_id,
+            original_name:result.originalname,
+            new_name:req.files.file.name,
+            mimeType:req.files.file.mimetype,
+            path:result.url,
+            ext:req.files.file.extension,
+            size:req.files.file.size,
+            upload_date:result.created_at,
+            uploaded_by:req.body.user_id  
+          });
+          console.log(result); 
+         },     
+        {
+          public_id:req.files.file.name, 
+          crop: 'limit',
+          width: 2000,
+          height: 2000,
+          eager: [
+            { width: 200, height: 200, crop: 'thumb', gravity: 'face',
+              radius: 20, effect: 'sepia' },
+            { width: 100, height: 150, crop: 'fit', format: 'png' }
+          ],                                     
+          tags: ['special', 'for_homepage']
+        }
+        
+        );
 
       // ************enable this one for Development***********
-      new_path = org_path.replace("client/", "");
+        // var org_path = req.files.file.path;
+        // var new_path ;
+        // new_path = org_path.replace("client/", "");
+        // console.log("org_path is : ", org_path);
+        // console.log("new path is : ", new_path);
+        // console.log(req.files);
+        // console.log("goal id is : " , req.body.goal_id);
+        // console.log("user id is : " , req.body.user_id);
 
-      console.log("org_path is : ", org_path);
-      console.log("new path is : ", new_path);
-      console.log(req.files);
-      console.log("goal id is : " , req.body.goal_id);
-      console.log("user id is : " , req.body.user_id);
-      Upload.create({
-        goal_id:req.body.goal_id,
-        original_name:req.files.file.originalname,
-        new_name:req.files.file.name,
-        mimeType:req.files.file.mimetype,
-        path:new_path,
-        ext:req.files.file.extension,
-        size:req.files.file.size,
-        upload_date:new Date(),
-        uploaded_by:req.body.user_id  
-       },function(err, upload) {
-            if(err) { return handleError(res, err); }
-            return res.json(201, upload);
-            // res.end("File uploaded.");
-        });
+        // // Write Image information to database
+        // Upload.create({
+        //   goal_id:req.body.goal_id,
+        //   original_name:req.files.file.originalname,
+        //   new_name:req.files.file.name,
+        //   mimeType:req.files.file.mimetype,
+        //   path:new_path,
+        //   ext:req.files.file.extension,
+        //   size:req.files.file.size,
+        //   upload_date:new Date(),
+        //   uploaded_by:req.body.user_id  
+        //  },function(err, upload) {
+        //       if(err) { return handleError(res, err); }
+        //       return res.json(201, upload);
+        //   });
+
      }
    });
+
 
   //Recieve email from nodemailer service to this restful api, then smtpTransport send emails
   app.post('/api/emails/',function(req,res){

@@ -225,22 +225,12 @@ angular.module('serveMeApp')
         var filename = fullPath.substring(startIndex);
         if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
           var ext  = filename.substring((filename.length-4));
-          // alert(ext)
           var date = Date.now()
           filename = filename.substring(1,(filename.length-4));
-          // alert(filename)
           filename+=date;
           filename+=ext
-          // alert(filename);
         }
-        // alert(filename);
-       // $http.post("/api/uploads/", {
-       //    img_name:filename,
-       //    upload_date:new Date(),
-       //    uploaded_by:$scope.getCurrentUser()._id  
-       //  }).success(function(data){
-       //    console.log(data)
-       // }); 
+   
       }
     }; 
   $scope.toggleImage = function (goalId) {
