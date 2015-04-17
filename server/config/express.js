@@ -69,7 +69,7 @@ module.exports = function(app) {
   //receive upload image resource and send image information to database
   app.post('/uploads',function(req,res){
     if(done==true){
-      var org_path = req.files.userPhoto.path;
+      var org_path = req.files.file.path;
       var new_path ;
       
       // new_path = org_path.replace("dist/public/", "");
@@ -82,12 +82,12 @@ module.exports = function(app) {
       console.log("user id is : " , req.body.user_id);
       Upload.create({
         goal_id:req.body.goal_id,
-        original_name:req.files.userPhoto.originalname,
-        new_name:req.files.userPhoto.name,
-        mimeType:req.files.userPhoto.mimetype,
+        original_name:req.files.file.originalname,
+        new_name:req.files.file.name,
+        mimeType:req.files.file.mimetype,
         path:new_path,
-        ext:req.files.userPhoto.extension,
-        size:req.files.userPhoto.size,
+        ext:req.files.file.extension,
+        size:req.files.file.size,
         upload_date:new Date(),
         uploaded_by:req.body.user_id  
        },function(err, upload) {

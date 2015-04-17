@@ -10,7 +10,8 @@ angular.module('serveMeApp', [
   'react',
   'ui.select',
   'ui.sortable',
-  'frapontillo.bootstrap-switch'
+  'frapontillo.bootstrap-switch',
+  'angularFileUpload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

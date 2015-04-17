@@ -242,7 +242,7 @@
                 <form id ="uploadForm" enctype ="multipart/form-data" action ="/uploads" method ="post">
                     <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
                       <core-icon-button class="attachment iconbar" type= "input" icon="attachment">
-                         <input type="file" id="upload-{{view._id}}" name="userPhoto" multiple class="upload" />
+                         <input type="file" id="upload-{{view._id}}" name="file" multiple class="upload" />
                          <input type="hidden" name="goal_id" value="{{view._id}}" />
                          <input type="hidden" name="user_id" value="{{getCurrentUser()._id}}" />
                          <!-- <input type="file" file-model="myFile"/> -->
