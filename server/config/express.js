@@ -48,8 +48,12 @@ module.exports = function(app) {
   var done=false;
   var rand = Math.random();
   app.use(multer({ 
-    // dest: './dist/public/assets/images/uploads/',
-    dest: './client/assets/images/uploads/',
+    // ************enable this one for production***********
+    dest: './dist/public/assets/images/uploads/',
+
+    // ************enable this one for Development***********
+    // dest: './client/assets/images/uploads/',
+    
     rename: function (fieldname, filename) {
       return filename+"-"+rand;
      },
@@ -71,9 +75,12 @@ module.exports = function(app) {
     if(done==true){
       var org_path = req.files.file.path;
       var new_path ;
-      
-      // new_path = org_path.replace("dist/public/", "");
-      new_path = org_path.replace("client/", "");
+
+      // ************enable this one for production***********
+      new_path = org_path.replace("dist/public/", "");
+
+      // ************enable this one for Development***********
+      // new_path = org_path.replace("client/", "");
 
       console.log("org_path is : ", org_path);
       console.log("new path is : ", new_path);
