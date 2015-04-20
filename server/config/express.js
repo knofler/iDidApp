@@ -22,7 +22,7 @@ var multer          = require('multer');
 var nodemailer      = require('nodemailer');
 var Upload          = require('../api/upload/upload.model');
 var cloudinary      = require('cloudinary');
-var GoogleSearch    = require('google-search');
+
 
 
 //Cloudinary configuration
