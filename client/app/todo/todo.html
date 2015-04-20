@@ -43,7 +43,6 @@
 
 <!-- Directive called here   -->
 <!-- <main-modal></main-modal> -->
-
 <core-drawer-panel transition id="core_drawer_panel" touch-action>
   <section id= "section1" drawer>
     <core-menu selected="1" selectedindex="1" id="core_menu"> 
@@ -162,6 +161,9 @@
                       </google-map-marker> -->
                    </google-map>
                </div>
+               <div class="searchBox" ng-class="{inActive:'{{view.isActive}}'}" id = "search-{{view._id}}">
+                 <gcse:search></gcse:search>
+               </div>
               <div class="container imgBox" id="image-{{view._id}}">
                 <div class="row" ng-repeat="image in imageData track by $index">
                   <div class="col-md-3 col-sm-4 col-xs-6">
@@ -261,6 +263,9 @@
                 <span ng-click = "showTask(view._id)">
                   <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                  </span>
+                <span ng-click = "toggleSearch(view._id)">
+                  <core-icon-button class="search iconbar" icon="search"></core-icon-button>
+                 </span> 
                 <span ng-click = "mailModal()" ng-class="{inActive:'{{view.isActive}}'}">
                   <core-icon-button class="mail iconbar" icon="mail"></core-icon-button>
                  </span>

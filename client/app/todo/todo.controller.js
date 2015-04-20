@@ -17,6 +17,10 @@ angular.module('serveMeApp')
    $scope.onColor      = "warning";
    $scope.offColor     = "success";
 
+   //Enable google custom search element
+   $scope.googleSearch = main.googleSearch;
+   $scope.googleSearch();
+
    //get user info
    $scope.getCurrentUser = Auth.getCurrentUser;
 
@@ -123,7 +127,7 @@ angular.module('serveMeApp')
    }; 
 
   //send email using nodemailer
-  $scope.sendMail    = function (){
+  $scope.sendMail     = function (){
    
     setTimeout(function(){
        $http.post("/api/emails/", {
@@ -141,12 +145,12 @@ angular.module('serveMeApp')
 
     },200);
     };
-  $scope.mailModal   = function (){
+  $scope.mailModal    = function (){
     $scope.formdata = {};
     document.getElementById('emailModal').toggle();
      // $scope.sendMail(to,from,subject,text);
    }; 
-  $scope.addTaskItem = function (goalId){   
+  $scope.addTaskItem  = function (goalId){   
     var id = "taskListDiv-"+goalId;
     var dataComing = $scope.taskformdata.task;
     // console.log("dataComing is :",dataComing)
@@ -171,7 +175,7 @@ angular.module('serveMeApp')
       }
     $scope.taskformdata = {}
     };
-  $scope.showTask    = function (goalId){
+  $scope.showTask     = function (goalId){
     $scope.taskdata = '';
     $http.get('/api/tasks/goals/'+goalId).success(function(data){
         // console.log("task for this id is :", data);
@@ -183,7 +187,10 @@ angular.module('serveMeApp')
     $('.taskListClass').hide()
     $("#"+id).delay(200).fadeToggle("slow")
    };  
-  $scope.handleImage = function (e){
+  $scope.toggleSearch = function (id){
+    $("#search-"+id).delay(200).fadeToggle("slow");
+   };   
+  $scope.handleImage  = function (e){
     var reader = new FileReader();
     reader.onload = function(event){
         var img = new Image();
@@ -196,7 +203,7 @@ angular.module('serveMeApp')
     }
     reader.readAsDataURL(e.target.files[0]);     
    };
-  $scope.taskDone    = function (goalId,taskId){
+  $scope.taskDone     = function (goalId,taskId){
     var id = "taskListDiv-"+goalId;
     // alert("hello I am clicked")
     $http.put('/api/tasks/'+taskId,{
@@ -215,7 +222,7 @@ angular.module('serveMeApp')
       }); 
     
    };
-  $scope.uploadImage = function (goalId){
+  $scope.uploadImage  = function (goalId){
     // console.log("formdata.userPhoto : ",$scope.myFile)
     var fullPath = document.getElementById('upload-'+goalId).value;
 
@@ -233,7 +240,7 @@ angular.module('serveMeApp')
    
       }
     }; 
-  $scope.toggleImage = function (goalId) {
+  $scope.toggleImage  = function (goalId) {
     $scope.imageData = '';
     $http.get('/api/uploads/goals/'+goalId).success(function(data){
         // console.log("image data for this id are :", data);

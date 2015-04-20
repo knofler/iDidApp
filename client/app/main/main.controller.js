@@ -17,23 +17,23 @@ angular.module('serveMeApp')
 		    	$scope.ididViews = dids;
 		    	$scope.ididViews.forEach(function(data){
 		    		duration = data.goal_completed - data.created
-		    	console.log("Goal created: ", $filter('date')(data.created, "yyyy-MM-dd"));
-		    	console.log("Goal completed: ", $filter('date')(data.goal_completed,"yyyy-MM-dd"));
+		    	// console.log("Goal created: ", $filter('date')(data.created, "yyyy-MM-dd"));
+		    	// console.log("Goal completed: ", $filter('date')(data.goal_completed,"yyyy-MM-dd"));
 		    	$scope.goal_create_date.push($filter('date')(data.created, 'yyyy-MM-dd'));
 		    	$scope.goal_completed_date.push($filter('date')(data.goal_completed, 'yyyy-MM-dd'));
 		    	// $scope.goal_create_date.push(data.created);
 		    	// $scope.goal_completed_date.push(data.completed)
 		    	$scope.goal_name.push(data.goalName)
-		    	console.log("Goal Name is :",$scope.goal_name);
-		    	console.log("duration is : ", duration)
+		    	// console.log("Goal Name is :",$scope.goal_name);
+		    	// console.log("duration is : ", duration)
 		    })
 		 socket.syncUpdates('goal', $scope.ididViews);
 	   });
 	
 	//Socket to update graph on idid action
 	socket.socket.on('updateGraph',function(data){
-		console.log($scope.goal_create_date)
-		console.log($scope.goal_completed_date)
+		// console.log($scope.goal_create_date)
+		// console.log($scope.goal_completed_date)
 		// By using load() API, you can load data and update the chart dynamically as follows:
 		// *****************Generate chart without data********************
 		$scope.apiChart.load({
@@ -52,8 +52,8 @@ angular.module('serveMeApp')
 
 	//On Page load run
 	setTimeout(function(){
-		console.log($scope.goal_create_date)
-		console.log($scope.goal_completed_date)
+		// console.log($scope.goal_create_date)
+		// console.log($scope.goal_completed_date)
 		// By using load() API, you can load data and update the chart dynamically as follows:
 		// *****************Generate chart without data********************
 		$scope.apiChart = c3.generate({
