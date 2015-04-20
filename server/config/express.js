@@ -27,9 +27,9 @@ var GoogleSearch    = require('google-search');
 
 //Cloudinary configuration
 cloudinary.config({ 
-  cloud_name: 'hjx9vff81', 
-  api_key: '655688376758282', 
-  api_secret: 'HJbVED4MGL3QwLUCrVl9d7-PZyY' 
+  cloud_name: 'hguwol7rs', 
+  api_key: '147632873149386', 
+  api_secret: 'jJDppzVxu1nInbz4f_PSXaJPjZA' 
   });
 
 // create reusable transporter object using SMTP transport
