@@ -100,6 +100,14 @@
          </div>
         <!-- ************************* end of add task top card *************************** -->
 
+         <!-- *************************Search Card fixed top card*************************** -->
+        <div class = "searchGoogle" >   
+          <div class = "cardBody">
+              <gcse:search></gcse:search>
+            </div>               
+         </div>
+        <!-- ************************* end of search Card fixed top card *************************** -->
+
         <!-- ***************************Each card for task display******************** -->       
         <ul class = "holdTaskul" ng-repeat="view in filtered = userGoalArr | orderBy:'-created'">      
           <div class = "todoTask" >   
@@ -161,9 +169,7 @@
                       </google-map-marker> -->
                    </google-map>
                </div>
-               <div class="searchBox" ng-class="{inActive:'{{view.isActive}}'}" id = "search-{{view._id}}">
-                 <gcse:search></gcse:search>
-               </div>
+             
               <div class="container imgBox" id="image-{{view._id}}">
                 <div class="row" ng-repeat="image in imageData track by $index">
                   <div class="col-md-3 col-sm-4 col-xs-6">

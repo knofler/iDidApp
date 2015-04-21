@@ -191,6 +191,21 @@ google-map {
        /*max-height: 530px;*/
        /*width: 50%*/
       }
+      .searchGoogle{
+        padding: 20px;
+        font-size: 16px;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px #666;
+  /*    border-bottom-left-radius: 8px;
+        border-top-left-radius: 5px;*/
+        margin-left: 14px;
+        margin-right: 10px;
+       /*border-radius: 9px/40px;*/
+       margin-bottom: 13px;
+       /*margin-top:83px;*/
+       /*max-height: 530px;*/
+       /*width: 50%*/
+      }
       .taskListDiv{
         margin-top: 10px;
       }
