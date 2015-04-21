@@ -103,7 +103,7 @@
          <!-- *************************Search Card fixed top card*************************** -->
         <div class = "searchGoogle" >   
           <div class = "cardBody">
-              <gcse:search></gcse:search>
+              <gcse:search enableAutoComplete="true"></gcse:search>
             </div>               
          </div>
         <!-- ************************* end of search Card fixed top card *************************** -->
@@ -228,6 +228,41 @@
                  </div>
               <div class = "cardComment" >        
               <div class = "cardFooter" >
+              
+              <div class="shareDiv" id="share-{{view._id}}">
+       
+                <div id="share-buttons">
+                 
+                    <!-- Facebook -->
+                    <a href="http://www.facebook.com/sharer.php?u=https://ididapp.herokuapp.com" target="_blank"><img src="./assets/images/somacro/facebook.png" alt="Facebook" /></a>
+                     
+                    <!-- Twitter -->
+                    <a href="http://twitter.com/share?url=https://ididapp.herokuapp.com&text=Simple Share Buttons&hashtags={{view.goalName}}" target="_blank"><img src="./assets/images/somacro/twitter.png" alt="Twitter" /></a>
+                     
+                    <!-- Google+ -->
+                    <a href="https://plus.google.com/share?url=https://ididapp.herokuapp.com" target="_blank"><img src="./assets/images/somacro/google.png" alt="Google" /></a>
+                     
+                    <!-- Digg -->
+                    <a href="http://www.digg.com/submit?url=https://ididapp.herokuapp.com" target="_blank"><img src="./assets/images/somacro/diggit.png" alt="Digg" /></a>
+                     
+                    <!-- Reddit -->
+                    <a href="http://reddit.com/submit?url=https://ididapp.herokuapp.com&title=iDidApp" target="_blank"><img src="./assets/images/somacro/reddit.png" alt="Reddit" /></a>
+                     
+                    <!-- LinkedIn -->
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=https://ididapp.herokuapp.com" target="_blank"><img src="./assets/images/somacro/linkedin.png" alt="LinkedIn" /></a>
+                     
+                    <!-- Pinterest -->
+                    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="./assets/images/somacro/pinterest.png" alt="Pinterest" /></a>
+                     
+                    <!-- StumbleUpon-->
+                    <a href="http://www.stumbleupon.com/submit?url=https://ididapp.herokuapp.com&title=iDidApp" target="_blank"><img src="./assets/images/somacro/stumbleupon.png" alt="StumbleUpon" /></a>
+                     
+                    <!-- Email -->
+                    <a href="mailto:?Subject=Send Task&Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://ididapp.herokuapp.com"><img src="./assets/images/somacro/email.png" alt="Email" /></a>
+                 
+                </div>
+              </div>
+              
                 <span ng-click = "toggleMap(view._id)">
                   <core-icon-button class="room iconbar" icon="room">
                   </core-icon-button>
@@ -264,8 +299,9 @@
                       </core-icon-button>
                      </span>
                  </form>
-               
-                <core-icon-button class = "reply iconbar" icon="reply"></core-icon-button> 
+                 <span ng-click = "toggleShare(view._id)" >
+                    <core-icon-button class = "reply iconbar" icon="reply"></core-icon-button> 
+                 </span>
                 <span ng-click = "showTask(view._id)">
                   <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                  </span>

@@ -190,6 +190,9 @@ angular.module('serveMeApp')
   $scope.toggleSearch = function (id){
     $("#search-"+id).delay(200).fadeToggle("slow");
    };   
+  $scope.toggleShare  = function (id){
+    $("#share-"+id).delay(200).fadeToggle("slow");
+   };   
   $scope.handleImage  = function (e){
     var reader = new FileReader();
     reader.onload = function(event){
