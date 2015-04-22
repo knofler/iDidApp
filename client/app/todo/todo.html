@@ -163,12 +163,10 @@
                    </google-map>
                </div>
                  <!-- ##################FACEBOOK Connect################# -->
-             <div class="socialBox">
-                <div class="fb-like" id="fb-share-{{view._id}}" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true">
-                </div>
-                <div class="commentBox" id="fb-commentBox-{{view._id}}">
-                  <div class="fb-comments" id="fb-comment-{{view._id}}" data-href="http://ididapp.herokuapp.com/" data-numposts="5" data-width="100%" data-colorscheme="light"></div>
-                </div>
+             <div class="socialBox" id="fbDiv-{{view._id}}">
+                <facebook-like-button></facebook-like-button>
+                <div class="fb-comments" id="fb-comment-{{view._id}}" data-href="http://ididapp.herokuapp.com/" data-numposts="5" data-width="100%" data- colorscheme="light">
+                  </div>
               </div>
               <!-- ##################FACEBOOK Connect################# -->
              
