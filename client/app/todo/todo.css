@@ -426,7 +426,7 @@ google-map {
       .note-add:hover{
         color:#3e50b4;
       }
-      .search:hover{
+      .tab:hover{
         color:#336600;
       }
       .mail:hover{
@@ -603,6 +603,9 @@ google-map {
   display: none;
 }
 .mapBox{
+  /*display: none;*/
+}
+.socialBox{
   /*display: none;*/
 }
 .commentBox{

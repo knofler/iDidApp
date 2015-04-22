@@ -66,161 +66,37 @@
              </div>
       <div class="bottom indent todo">
           
-      <!-- FACEBOOK WITH EZFB -->
-    <div class="container">
-      <h2>angular-easyfb API demo (promise version)</h2>
+   
+    <!-- FACEBOOK DIRECTIVE DEMONSTRATION --> 
+  
+     <!--     
+      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div> -->
 
-      <div>
-        <button class="btn btn-primary" ng-click="login()" ng-disabled="loginStatus.status == 'connected'">Connect with Facebook</button>
-         &nbsp; 
-        <button class="btn btn-danger" ng-click="logout()" ng-disabled="!loginStatus || loginStatus.status != 'connected'">Logout</button>
-         &nbsp;
-        <button class="btn btn-success" ng-click="share()">FB.ui</button>
-      </div>
+      <!-- <div  onrender="rendered()" class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
+  
+      <div  onrender="rendered()" class="fb-send" data-href="http://developers.facebook.com/docs/plugins/" data-colorscheme="light"></div>
+ 
+      <div  onrender="rendered()" class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="500"></div>
 
-      <br>
+      <div  onrender="rendered()" class="fb-follow" data-href="http://www.facebook.com/zuck" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
 
-      <h4>
-        Hello, <span ng-show="me.name">{{ me.name }}</span><span ng-show="me.error">unkown</span>!
-      </h4>
+      <div  onrender="rendered()" class="fb-comments" data-href="http://example.com/comments" data-numposts="5" data-colorscheme="light"></div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <h4 class="text-info">$FB.loginStatus()</h4>
-              <div class="code-block" hljs source="loginStatusJSON"></div>
-            </div>
-            <div class="col-md-6">
-              <h4 class="text-info">$FB.api('/me') & $FB.api('/me/likes')</h4>
-              <div class="code-block" hljs source="apiResJSON"></div>
-            </div>
-          </div>
-
-        </div>
-          
-          <br>
-
-          <div class="row">
-            <div class="col-md-6">
-              <h4 class="text-info">$FB.loginStatus()</h4>
-              <div class="code-block" hljs source="loginStatusJSON"></div>
-            </div>
-            <div class="col-md-6">
-              <h4 class="text-info">$FB.api('/me')</h4>
-              <div class="code-block" hljs source="apiMeJSON"></div>
-            </div>
-          </div>
-
-        </div>
-           <!-- FACEBOOK WITH EZFB -->
-
-           <!-- FACEBOOK DIRECTIVE DEMONSTRATION -->
-           <a href="https://github.com/pc035860/angular-easyfb">
-      <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
-    </a>
-    <div class="container">
-      <h2>angular-easyfb social plugins demo</h2>
-      
-      <ul class="nav nav-tabs">
-        <li ng-repeat="dir in SOCIAL_PLUGINS" ng-class="{active: isActive(dir)}">
-          <a href="" ng-click="goto(dir)">{{ dir }}</a>
-        </li>
-      </ul>
-      
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="pull-left hint-text">
-            <span class="text-danger" ng-show="!pluginOn">No plugin in view</span>
-            <span class="text-success" ng-show="!rendering">Social plugin rendered</span>
-            <span class="text-muted" ng-show="rendering && pluginOn">Rendering...</span>
-          </div>
-          <div class="pull-right">
-            <button class="btn btn-success" ng-show="!pluginOn" ng-click="pluginOn = !pluginOn">On</button>
-            <button class="btn btn-default" ng-show="pluginOn" ng-click="pluginOn = !pluginOn">Off</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="ng-view-container">
-        <div ng-view></div>
-      </div>
-    </div>
+      <div  onrender="rendered()" class="fb-comments-count" data-href="http://example.com/comments"></div>
+ 
+      <div  onrender="rendered()" class="fb-activity" data-site="developers.facebook.com" data-action="likes, recommends" data-colorscheme="light" data-header="true"></div>
     
+      <div  onrender="rendered()" class="fb-recommendations" data-site="developers.facebook.com" data-action="likes, recommends" data-colorscheme="light" data-header="true"></div>
+   
+      <div  onrender="rendered()" class="fb-recommendations-bar" data-site="developers.facebook.com" data-read-time="30" data-side="left" data-action="like"></div>
+   
+      <div  onrender="rendered()" class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
     
-    <script type="text/ng-template" id="like.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-    </script>
+      <div  onrender="rendered()" class="fb-facepile" data-href="http://facebook.com/FacebookDevelopers" data-max-rows="1" data-colorscheme="light" data-size="medium" data-show-count="true"></div> -->
+   
 
-    <script type="text/ng-template" id="share-button.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-share-button" data-href="http://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
-    </script>
-
-    <script type="text/ng-template" id="send.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-send" data-href="http://developers.facebook.com/docs/plugins/" data-colorscheme="light"></div>
-    </script>
-
-    <script type="text/ng-template" id="post.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-post" data-href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="500"></div>
-    </script>
-
-    <script type="text/ng-template" id="follow.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-follow" data-href="http://www.facebook.com/zuck" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
-    </script>
-
-    <script type="text/ng-template" id="comments.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-comments" data-href="http://example.com/comments" data-numposts="5" data-colorscheme="light"></div>
-    </script>
-
-    <script type="text/ng-template" id="comments-count.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-comments-count" data-href="http://example.com/comments"></div>
-    </script>
-
-    <script type="text/ng-template" id="activity.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-activity" data-site="developers.facebook.com" data-action="likes, recommends" data-colorscheme="light" data-header="true"></div>
-    </script>
-
-    <script type="text/ng-template" id="recommendations.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-recommendations" data-site="developers.facebook.com" data-action="likes, recommends" data-colorscheme="light" data-header="true"></div>
-    </script>
-
-    <script type="text/ng-template" id="recommendations-bar.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-recommendations-bar" data-site="developers.facebook.com" data-read-time="30" data-side="left" data-action="like"></div>
-    </script>
-
-    <script type="text/ng-template" id="like-box.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
-    </script>
-
-    <script type="text/ng-template" id="facepile.html">
-      <div ng-if="pluginOn" onrender="rendered()" class="fb-facepile" data-href="http://facebook.com/FacebookDevelopers" data-max-rows="1" data-colorscheme="light" data-size="medium" data-show-count="true"></div>
-    </script>
-
-
-           <!-- FACEBOOK DIRECTIVE DEMONSTRATION -->
+      <!-- FACEBOOK DIRECTIVE DEMONSTRATION -->
            
-
-         <!-- FACEBOOK INTERPOLATED EXAMPLE   -->
-          
-        <div class="container">
-          <h2>angular-easyfb social plugins demo2</h2>
-          <p>&nbsp;</p>
-          <div class="row" style="margin-bottom: 20px;" 
-            ng-repeat="pageHref in fanPages">
-            
-            <span ng-init="widget.href = pageHref"></span>
-            <div class="col-sm-6">
-              <input class="form-control" type="text" ng-model="widget.href" />
-            </div>
-            <div class="col-sm-3" style="padding-top: 5px;">
-              <div class="fb-like" onrender="widget.rendered = true" data-href="{{ widget.href }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-            </div>
-            <div class="col-sm-3" style="font-size: 18px;">
-              <strong ng-show="widget.rendered" class="text-success">Rendered</strong>
-              <span ng-show="!widget.rendered" class="text-muted">Rendering</span>
-            </div>
-          </div>
-        </div>
-          <!-- FACEBOOK INTERPOLATED EXAMPLE   -->
-
 
         <!-- *************************add task top card*************************** -->
         <div class = "addtodoTask" >   
@@ -320,11 +196,18 @@
                    </google-map>
                </div>
                  <!-- ##################FACEBOOK Connect################# -->
-             <div class="socialBox" id="fbDiv-{{view._id}}">
-                <facebook-like-button></facebook-like-button>
-                <div class="fb-comments" id="fb-comment-{{view._id}}" data-href="http://ididapp.herokuapp.com/" data-numposts="5" data-width="100%" data- colorscheme="light">
-                  </div>
+             <div class="socialBox" id="social-{{view._id}}">
+                <!-- <facebook-like-button pageurl="http://ididapp.herokuapp.com"></facebook-like-button> -->
+               <span class="fb-send" data-href="http://ididapp.herokuapp.com" data-colorscheme="light">
+               </span>
+               <span class="fb-like" data-href="http://ididapp.herokuapp.com" 
+                data-layout="standard" data-action="like" data-show-faces="false" data-share="true">
+                </span>
               </div>
+               <div class="fb-comments" id="comments-{{view._id}}" data-href="http://ididapp.herokuapp.com" 
+                    data-numposts="5" data-colorscheme="light" data-width="100%">
+                </div> 
+               
               <!-- ##################FACEBOOK Connect################# -->
              
               <div class="container imgBox" id="image-{{view._id}}">
@@ -398,17 +281,11 @@
                 </div>
               </div>
 
-            
-
                 <span ng-click = "toggleMap(view._id)">
                   <core-icon-button class="room iconbar" icon="room">
                   </core-icon-button>
                  </span>
                 <core-icon-button class = "phone iconbar" icon="perm-phone-msg"></core-icon-button>
-                  <!--<template bind if="{{ view.isFav == true }}">
-                    <core-icon-button class="star iconbar isFav" icon="star"></core-icon-button>
-                  </template>
-                  <template bind if="{{ view.isFav == false}}"> -->
                 <span ng-click = "makeFav(view._id)" >
                   <core-icon-button class="star iconbar" icon="star" ng-class="{starFav:view.isFav}">
                   </core-icon-button>
@@ -417,7 +294,6 @@
                   <core-icon-button class="perm-media iconbar" icon="perm-media">
                   </core-icon-button>
                  </span>
-                <!-- </template> -->
 
                 <form id ="uploadForm" enctype ="multipart/form-data" action ="/uploads" method ="post">
                     <span class = "fileUpload" id="fileUpload-{{view._id}}" ng-click="showUpload(view._id)" ng-class="{inActive:'{{view.isActive}}'}">
@@ -442,8 +318,8 @@
                 <span ng-click = "showTask(view._id)">
                   <core-icon-button class="note-add iconbar" icon="note-add"></core-icon-button>
                  </span>
-                <span ng-click = "toggleSearch(view._id)">
-                  <core-icon-button class="search iconbar" icon="search"></core-icon-button>
+                <span ng-click = "toggleSocial(view._id)">
+                  <core-icon-button class="tab iconbar" icon="tab"></core-icon-button>
                  </span> 
                 <span ng-click = "mailModal()" ng-class="{inActive:'{{view.isActive}}'}">
                   <core-icon-button class="mail iconbar" icon="mail"></core-icon-button>
@@ -456,5 +332,4 @@
    </section>
  </core-drawer-panel>   
 
-<!-- <my-element></my-element> -->
 
