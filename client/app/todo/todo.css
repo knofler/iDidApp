@@ -605,6 +605,9 @@ google-map {
 .mapBox{
   /*display: none;*/
 }
+.commentBox{
+  /*display: none;*/
+}
 .searchBox{
 /*  margin: 10px;
   padding: 10 0;

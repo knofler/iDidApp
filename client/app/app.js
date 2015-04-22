@@ -11,14 +11,16 @@ angular.module('serveMeApp', [
   'ui.select',
   'ui.sortable',
   'frapontillo.bootstrap-switch',
-  'angularFileUpload'
+  'angularFileUpload',
+  'facebook'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,FacebookProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+    FacebookProvider.init('1580418822200809')
   })
   .filter('capitalize', function() {
     return function(input, all) {

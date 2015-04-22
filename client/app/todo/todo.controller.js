@@ -1,7 +1,7 @@
 // 'use strict';
 
 angular.module('serveMeApp')
-  .controller('TodoCtrl', function ($scope,main,$http, socket, $location, $anchorScroll,Auth,$filter) {
+  .controller('TodoCtrl', function ($scope,main,$http, socket, $location, $anchorScroll,Auth,$filter,Facebook) {
     
   // @@@@@@@@@@@@@@@@@@@ DATA SOURCES and Models @@@@@@@@@@@@@@@@@@@@@@@
   $scope.awesomeThings = [];
@@ -51,8 +51,27 @@ angular.module('serveMeApp')
             socket.syncUpdates('goal', $scope.ididViews);
      });
 
-
-
+  // ################ FACEBOOK API ##################
+  $scope.login          = function() {
+    // From now on you can use the Facebook service just as Facebook api says
+    Facebook.login(function(response) {
+      // Do something with response.
+    });
+    };
+  $scope.getLoginStatus = function() {
+    Facebook.getLoginStatus(function(response) {
+      if(response.status === 'connected') {
+        $scope.loggedIn = true;
+      } else {
+        $scope.loggedIn = false;
+      }
+    });
+   };
+  $scope.me             = function() {
+    Facebook.api('/me', function(response) {
+      $scope.user = response;
+    });
+   };        
   // Functions interating with api calls and rendering pages
 
   $scope.addGoals    = function (){

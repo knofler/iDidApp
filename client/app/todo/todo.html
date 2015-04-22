@@ -155,13 +155,6 @@
                   {{view.goalDesc}}
                  </span>
                </div>
-              <div class = "taskList" >
-                 <!--  <ul>
-                    <template repeat="{{task in goals[key].tasks}}">
-                      <li>{{task.taskItem}}</li>
-                     </template>
-                   </ul> -->
-                 </div>
               <div class= "mapBox" ng-class="{inActive:'{{view.isActive}}'}" id = "map-{{view._id}}">
                 <google-map latitude="{{view.latitude}}" longitude="{{view.longitude}}" fitToMarkers>
                    <!--    <google-map-marker latitude="{{view.latitude}}" longitude="{{view.longitude}}}"
@@ -169,40 +162,26 @@
                       </google-map-marker> -->
                    </google-map>
                </div>
+                 <!-- ##################FACEBOOK Connect################# -->
+             <div class="socialBox">
+                <div class="fb-like" id="fb-share-{{view._id}}" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true">
+                </div>
+                <div class="commentBox" id="fb-commentBox-{{view._id}}">
+                  <div class="fb-comments" id="fb-comment-{{view._id}}" data-href="http://ididapp.herokuapp.com/" data-numposts="5" data-width="100%" data-colorscheme="light"></div>
+                </div>
+              </div>
+              <!-- ##################FACEBOOK Connect################# -->
              
               <div class="container imgBox" id="image-{{view._id}}">
                 <div class="row" ng-repeat="image in imageData track by $index">
                   <div class="col-md-3 col-sm-4 col-xs-6">
                     <img class="img-responsive" src="{{image.path}}" />
                   </div>
-                    <!-- <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg"/>
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" />
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" />
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" />
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://www.virginia.org/uploadedImages/virginiaorg/Images/OrgImages/H/HamptonConventionVisitorBureau/Grandview_Nature_Preserve.jpg?width=300&height=200&scale=upscalecanvas" />
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://th03.deviantart.net/fs70/200H/f/2010/256/0/9/painting_of_nature_by_dhikagraph-d2ynalq.jpg" />
-                     </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                      <img class="img-responsive" src="http://2.bp.blogspot.com/-H6MAoWN-UIE/TuRwLbHRSWI/AAAAAAAABBk/89iiEulVsyg/s400/Free%2BNature%2BPhoto.jpg" />
-                    </div>
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <img class="img-responsive" src="http://blog.arborday.org/wp-content/uploads/2013/02/NEC1-300x200.jpg" />
-                    </div> -->
                   </div>
                 </div>
+
               <div class = "taskListClass" id="taskListDiv-{{view._id}}">
-                  <div ng-class="{inActive:'{{view.isActive}}'}">
+                <div ng-class="{inActive:'{{view.isActive}}'}">
                     <paper-input-decorator auto-complete floatingLabel label="Goal specific tasks .. " id="taskNameDeco">
                        <input id="taskName" ng-model="taskformdata.task" is="core-input" required>
                     </paper-input-decorator>
@@ -226,6 +205,7 @@
                       </ul>
                       </div>
                  </div>
+              
               <div class = "cardComment" >        
               <div class = "cardFooter" >
               
@@ -262,7 +242,9 @@
                  
                 </div>
               </div>
-              
+
+            
+
                 <span ng-click = "toggleMap(view._id)">
                   <core-icon-button class="room iconbar" icon="room">
                   </core-icon-button>
