@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('serveMeApp')
-  .controller('IdidCtrl', function ($scope,FileUploader,Facebook) {
+  .controller('IdidCtrl', function ($scope,FileUploader) {
     
   	var uploader = $scope.uploader = new FileUploader({
             // url: '/uploads'

@@ -1,7 +1,7 @@
 // 'use strict';
 
 angular.module('serveMeApp')
-	.controller('MainCtrl', function ($scope,$http,socket,$filter,Facebook) {
+	.controller('MainCtrl', function ($scope,$http,socket,$filter) {
 
 	$scope.goal_create_date 	= ["created"];
 	$scope.goal_completed_date  = ["goal_completed"];

@@ -31,7 +31,8 @@
     "c3": "~0.4.10",
     "angular-file-upload": "~1.1.5",
     "angular-facebook": "~0.2.3",
-    "facebook-like-button": "~1.0.2"
+    "facebook-like-button": "~1.0.2",
+    "angular-easyfb": "~1.2.1"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

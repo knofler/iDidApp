@@ -12,15 +12,36 @@ angular.module('serveMeApp', [
   'ui.sortable',
   'frapontillo.bootstrap-switch',
   'angularFileUpload',
-  'facebook'
+  'ezfb'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,FacebookProvider) {
+.constant('SOCIAL_PLUGINS', [
+  'like', 'share-button', 'send', 'post',
+  'follow', 'comments', 'comments-count', 'activity', 'recommendations',
+  'recommendations-bar', 'like-box', 'facepile'
+])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,ezfbProvider,SOCIAL_PLUGINS) {
     $urlRouterProvider
       .otherwise('/');
 
+    // $routeProvider.otherwise({redirectTo: '/like'});
+  
+    // angular.forEach(SOCIAL_PLUGINS, function (dirTag) {
+    //   var routeName = dirTag;
+      
+    //   $routeProvider
+    //   .when('/' + routeName, {
+    //     templateUrl: routeName + '.html'
+    //   });
+    // });
+
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-    FacebookProvider.init('1580418822200809')
+    // FacebookProvider.init('1580418822200809');
+    ezfbProvider.setInitParams({
+      // This is my FB app id for plunker demo app
+      appId: '1580418822200809'
+    }); 
+
   })
   .filter('capitalize', function() {
     return function(input, all) {
