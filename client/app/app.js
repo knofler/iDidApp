@@ -20,12 +20,12 @@ angular.module('serveMeApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+    
     ezfbProvider.setInitParams({
       // This is my FB app id for plunker demo app
       appId: '1580418822200809',
        version: 'v2.0'
     }); 
-
   })
   .filter('capitalize', function() {
     return function(input, all) {
