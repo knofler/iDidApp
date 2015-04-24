@@ -20,7 +20,7 @@ angular.module('serveMeApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
-    
+
     ezfbProvider.setInitParams({
       // This is my FB app id for plunker demo app
       appId: '1580418822200809',
@@ -41,12 +41,12 @@ angular.module('serveMeApp', [
         }
     })
   .filter('range', function() {
-  return function(input, total) {
-    total = parseInt(total);
-    for (var i=0; i<total; i++)
-      input.push(i);
-    return input;
-  };
+    return function(input, total) {
+      total = parseInt(total);
+      for (var i=0; i<total; i++)
+        input.push(i);
+      return input;
+    };
   })
   .filter('split', function() {
         return function(input, splitChar, splitIndex) {
@@ -81,7 +81,6 @@ angular.module('serveMeApp', [
       }
     };
   })
-  
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
