@@ -12,7 +12,8 @@ angular.module('serveMeApp', [
   'ui.sortable',
   'frapontillo.bootstrap-switch',
   'angularFileUpload',
-  'ezfb'
+  'ezfb',
+  'ngTouch'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,ezfbProvider) {
     $urlRouterProvider
