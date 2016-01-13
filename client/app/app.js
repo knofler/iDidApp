@@ -11,7 +11,6 @@ angular.module('serveMeApp', [
   'ui.select',
   'ui.sortable',
   'frapontillo.bootstrap-switch',
-  'angularFileUpload',
   'ezfb',
   'ngTouch'
 ])

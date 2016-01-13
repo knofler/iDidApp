@@ -6,14 +6,14 @@ angular.module('serveMeApp')
       {'title': 'Home','link': '/'}
       ];
     $scope.loggedinMenu =[
-      {'title': 'toDo','link': '/todo'},
-      {'title': 'iDid','link': '/idid'}
+      {'title': 'toDo','link': '/todo'}
+      // {'title': 'iDid','link': '/idid'}
       // {'title': 'React','link':'/react'}
     ];
 
-    $scope.isCollapsed = true;
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
+    $scope.isCollapsed    = true;
+    $scope.isLoggedIn     = Auth.isLoggedIn;
+    $scope.isAdmin        = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.isUser         = Auth.isUser;
 
